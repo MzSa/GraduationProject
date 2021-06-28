@@ -11,8 +11,9 @@ import {SidebarModule} from '../sidebar/sidebar.module';
 import {NavbarModule} from '../shared/navbar/navbar.module';
 import {FooterModule} from '../shared/footer/footer.module';
 import {FixedPluginModule} from '../shared/fixedplugin/fixedplugin.module';
-import {RequestNeedComponent} from './request-need/request-need.component';
+import {ResponseNeedComponent} from './response-need/response-need.component';
 import {TrackingRequestComponent} from './tracking-request/tracking-request.component';
+import {DetailsNeedComponent} from './details-need/details-need.component';
 
 const routes: Routes = [
   {
@@ -23,10 +24,13 @@ const routes: Routes = [
         path: 'publish-need', component: PublishNeedComponent
       },
       {
-        path: 'request-need/:id', component: RequestNeedComponent
+        path: 'responses-need/:id', component: ResponseNeedComponent
       },
       {
-        path: 'traking-request', component: TrackingRequestComponent
+        path: 'details-need/:id', component: DetailsNeedComponent
+      },
+      {
+        path: 'tracking-request/:id', component: TrackingRequestComponent
       },
       {
         path: '', redirectTo: 'publish-need', pathMatch: 'full'
@@ -36,7 +40,13 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [PublishNeedComponent, DonationHomeComponent, RequestNeedComponent, TrackingRequestComponent],
+  declarations: [
+    PublishNeedComponent,
+    DonationHomeComponent,
+    ResponseNeedComponent,
+    TrackingRequestComponent,
+    DetailsNeedComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

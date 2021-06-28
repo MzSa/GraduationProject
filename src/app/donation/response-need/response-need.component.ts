@@ -3,10 +3,10 @@ import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-request-need',
-  templateUrl: './request-need.component.html',
-  styleUrls: ['./request-need.component.css']
+  templateUrl: './response-need.component.html',
+  styleUrls: ['./response-need.component.css']
 })
-export class RequestNeedComponent implements OnInit {
+export class ResponseNeedComponent implements OnInit {
 
   id;
   public events: any[];
@@ -19,19 +19,19 @@ export class RequestNeedComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          console.log(typeof this.id);
+          console.log(this.id);
         }
       );
 
     this.events = [
       {
         id: 1,
-        header: 'المتبرع الأول',
+        name: 'المتبرع الأول',
         body: 'مكان السكن جمرايا التوصيل مجاني',
       },
       {
         id: 2,
-        header: 'المتبرع الثاني',
+        name: 'المتبرع الثاني',
         body: 'مكان السكن برزة',
       }
     ];

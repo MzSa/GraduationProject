@@ -6,12 +6,17 @@
         <div class="col-sm-12 col-md">
           <ngx-timeline [events]="Events">
             <ng-template let-event let-index="rowIndex" timelineBody>
-              <div>{{ event.description }}</div>
+              <div class="card bg-light mb-3">
+                <div class="card-header" style="text-align: center">
+                  <h3>{{ event.description }}</h3>
+                </div>
+              </div>
+
               <div class="button-row">
                 <button
                   type="button"
                   class="btn btn-primary"
-                  (click)="editEvent(index, eventmodal)"
+                  (click)="editEvent(event.id, eventmodal)"
                 >
                   <i class="fa fa-edit"></i>
                 </button>
@@ -19,15 +24,25 @@
                 <button
                   type="button"
                   class="btn btn-success"
-                  (click)="viewRequest(event.id)"
+                  (click)="viewResponses(event.id)"
                 >
                   <i class="fa fa-eye"></i>
+                  View Responses
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="viewDetails(event.id)"
+                >
+                  <i class="fa fa-eye"></i>
+                  View Details
                 </button>
 
                 <button
                   type="button"
                   class="btn btn-danger"
-                  (click)="deleteEvent(index)"
+                  (click)="deleteEvent(event.id)"
                 >
                   <i class="fa fa-trash"></i>
                 </button>

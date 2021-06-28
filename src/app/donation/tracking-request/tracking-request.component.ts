@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import State from './state';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-tracking-request',
@@ -8,6 +9,7 @@ import State from './state';
 })
 export class TrackingRequestComponent implements OnInit {
 
+  id: number;
   state: State[] = [
     {
       id: 1,
@@ -26,10 +28,17 @@ export class TrackingRequestComponent implements OnInit {
     }
   ]
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          console.log(this.id);
+        }
+      );
   }
 
 }

@@ -30,7 +30,7 @@ export class PublishNeedComponent implements OnInit {
       }
     ]
   };
-  Events: PublishNeed[];
+  Events: any[];
 
   modalCallback!: () => void;
   catalogs: Catalog[] = [
@@ -74,19 +74,52 @@ export class PublishNeedComponent implements OnInit {
     //   console.log(data);
     //   this.catalogs = data;
     // });
-    //
-    // this.donationService.gethashtags().subscribe((data: Hashtags[]) => {
-    //   console.log(data);
-    //   this.hashtags = data;
-    // });
-    //
-    // this.getEvents();
+
+    this.getEvents();
   }
 
   private getEvents() {
-    this.donationService.getEvents().subscribe((response: PublishNeed[]) => {
-      this.Events = response;
-    });
+    // this.donationService.getEvents().subscribe((response: PublishNeed[]) => {
+    //   this.Events = response;
+    // });
+    this.Events = [
+      {
+        id: 1,
+        description: 'بحاجة ملابس',
+        amount: 20,
+        needDelivery: true,
+        dueDate: Date(),
+        catalog: {
+          id: 1
+        },
+        hashtags: [
+          {
+            name: 'ملابس'
+          },
+          {
+            name: 'طعام'
+          }
+        ]
+      },
+      {
+        id: 2,
+        description: 'بحاجة طعام',
+        amount: 50,
+        needDelivery: false,
+        dueDate: Date(),
+        catalog: {
+          id: 5
+        },
+        hashtags: [
+          {
+            name: 'ملابس'
+          },
+          {
+            name: 'طعام'
+          }
+        ]
+      }
+    ];
   }
 
   // private getEvents() {
@@ -186,35 +219,84 @@ export class PublishNeedComponent implements OnInit {
     // });
   }
 
-  // editEvent(index: number, template: any) {
-  //   this.currentEvent = this.events[index];
-  //   this.updateForm();
-  //   this.modalCallback = this.updateEvent.bind(this);
-  //   this.modalRef = this.modalService.show(template);
-  // }
-  //
-  // updateEvent() {
-  //   const eventData = {
-  //     id: this.currentEvent.id,
-  //     name: this.form.get('name')!.value,
-  //     description: this.form.get('description')!.value,
-  //     date: this.form.get('date')!.value,
-  //   };
-  //   this.modalRef.hide();
-  //   this.donationService.updateEvent(eventData).subscribe(() => {
-  //     this.getEvents();
-  //   });
-  // }
-  //
-  // deleteEvent(index: number) {
-  //   this.donationService.deleteEvent(this.events[index]).subscribe(() => {
-  //     this.getEvents();
-  //   });
-  // }
+  private updateForm() {
+    // setTimeout(() => {
+    //   this.form.setValue({
+    //     description: this.currentEvent.description,
+    //     amount: this.currentEvent.amount,
+    //     needDelivery: this.currentEvent.needDelivery,
+    //     date: new Date(this.currentEvent.dueDate),
+    //     catalog: this.currentEvent.catalog.id,
+    //     hashtags: this.currentEvent.hashtags[0].name,
+    //   });
+    // },);
 
-  viewRequest(id: number) {
-    // console.log(id);
-    this.router.navigate(['/publish/request', id]);
+    this.form.patchValue(this.currentEvent);
+
+  }
+
+  editEvent(index: number, template: any) {
+    this.currentEvent = {
+      description: 'ammar',
+      amount: 50,
+      needDelivery: true,
+      dueDate: new Date(),
+      catalog: {
+        id: 1
+      },
+      hashtags: [
+        {
+          name: 'foooooood'
+        }
+      ]
+    };
+    this.updateForm();
+    this.modalCallback = this.updateEvent.bind(this);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateEvent() {
+
+    for (let i = 0; i < this.hashtags().length; i++) {
+      this.currentEvent.hashtags[i] = {
+        name: ''
+      };
+      this.currentEvent.hashtags[i].name = (this.form.get('hashtags').value[i]).hashtag;
+    }
+
+    const eventData = {
+      description: this.form.get('description')!.value,
+      amount: this.form.get('amount')!.value,
+      needDelivery: this.form.get('needDelivery')!.value,
+      catalog: {
+        id: this.form.get('catalog')!.value
+      },
+      hashtags: this.currentEvent.hashtags,
+      dueDate: this.form.get('date')!.value,
+    };
+
+    const id = 105;
+
+    this.modalRef.hide();
+    this.donationService.updateEvent(id, eventData).subscribe(() => {
+      this.getEvents();
+    });
+  }
+
+  deleteEvent(id: number) {
+    this.donationService.deleteEvent(id).subscribe(() => {
+      this.getEvents();
+    });
+  }
+
+  viewResponses(id: number) {
+    console.log(id);
+    this.router.navigate(['donation/responses-need', id]);
+  }
+
+  viewDetails(id: number) {
+    console.log(id);
+    this.router.navigate(['donation/details-need', id]);
   }
 
   onCancel() {

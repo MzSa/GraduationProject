@@ -1,0 +1,52 @@
+<div class="container" style="text-align: center">
+  <div class="card bg-light mb-3">
+    <div class="card-header" style="text-align: center">
+      <div class="title-container">
+        <h1 class="title code">&lt;details&gt;</h1>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-list">
+        <div class="card">
+          <h3 class="card-title code code-details">&lt;Description&gt;</h3>
+          <p class="card-description">{{ need.description }}</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title code code-summary">&lt;Need Delivery&gt;</h3>
+          <p class="card-description">{{ need.needDelivery }}</p>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="card" *ngFor="let hashtag of need.hashtags">
+          <h3 class="card-title code code-summary">&lt;Hash Tags&gt;</h3>
+          <p class="card-description">{{ hashtag.name }}</p>
+        </div>
+      </div>
+      <div class="sample">
+        <div class="sample-title">Amount</div>
+        <div class="sample-code">
+          {{ need.amount }}
+          <div *ngIf="need.amount" class="progress">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              attr.aria-valuenow="{{ progress }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [ngStyle]="{ width: progress + '%' }"
+            >
+              {{ progress }}%
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample">
+        <div class="sample-title">Catalog</div>
+        <div class="sample-code">
+          {{ need.catalog.id }}
+        </div>
+      </div>
+      <button class="btn btn-warning" (click)="viewStatus()">View Status</button>
+    </div>
+  </div>
+</div>
