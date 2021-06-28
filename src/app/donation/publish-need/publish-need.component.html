@@ -4,9 +4,9 @@
       <div class="card-body">
 
         <div class="col-sm-12 col-md">
-          <ngx-timeline [events]="events">
+          <ngx-timeline [events]="Events">
             <ng-template let-event let-index="rowIndex" timelineBody>
-              <div>{{ event.body }}</div>
+              <div>{{ event.description }}</div>
               <div class="button-row">
                 <button
                   type="button"

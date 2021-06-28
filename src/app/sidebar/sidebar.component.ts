@@ -13,6 +13,7 @@ export const ROUTES: RouteInfo[] = [
   {path: '/auth/registerNgo', title: 'NGO Register', icon: 'nc-single-02', class: ''},
   {path: '/donation/publish-need', title: 'Publish Need', icon: 'nc-diamond', class: ''},
   {path: '/donation/traking-request', title: 'Traking Request', icon: 'nc-spaceship', class: ''},
+  {path: '/ngo/ngoTable/home', title: 'Ngo', icon: 'nc-tile-56', class: ''},
   // {path: '/pages/maps', title: 'Maps', icon: 'nc-pin-3', class: ''},
   // {path: '/pages/notifications', title: 'Notifications', icon: 'nc-bell-55', class: ''},
   // {path: '/pages/user', title: 'User Profile', icon: 'nc-single-02', class: ''},

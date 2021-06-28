@@ -12,6 +12,10 @@ export const AppRoutes: Routes = [
     loadChildren: () => import(`./donation/donation.module`).then(m => m.DonationModule)
   },
   {
+    path: 'ngo',
+    loadChildren: () => import(`./ngo/ngo.module`).then(m => m.NgoModule)
+  },
+  {
     path: 'pages',
     component: AdminLayoutComponent,
     children: [
