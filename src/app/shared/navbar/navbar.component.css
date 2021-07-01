@@ -1,0 +1,10 @@
+.icon-button__badge {
+  width: 25px;
+  height: 25px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
