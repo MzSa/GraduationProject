@@ -11,14 +11,17 @@ import {AppComponent} from './app.component';
 import {AppRoutes} from './app.routing';
 
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
-
+import {TokenInterceptor} from './auth/token.interceptor';
+import {MyLoaderComponent} from './my-loader/my-loader.component';
+import {LoaderInterceptorService} from './interceptors/loader-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    MyLoaderComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +35,18 @@ import {ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

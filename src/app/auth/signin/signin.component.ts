@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../auth.service';
 import {LoginRequest} from '../login-request';
+import {Model} from '../model';
+import {HttpClient} from '@angular/common/http';
+import {LoginResponse} from '../login-response';
 
 @Component({
   selector: 'app-signin',
@@ -16,12 +19,14 @@ export class SignInComponent implements OnInit {
   submitted = false;
 
   loginRequest: LoginRequest;
+  loginResponse: Model;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    public http: HttpClient
   ) {
     this.loginRequest = {
       login: '',
@@ -48,19 +53,34 @@ export class SignInComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
     this.loading = true;
     this.loginRequest.login = this.f.username.value;
     this.loginRequest.password = this.f.password.value;
-    this.authService.login(this.loginRequest)
-      .subscribe(
-        data => {
-          // this.router.navigate([this.returnUrl]);
-          console.log(data);
-        },
-        error => {
-          this.loading = false;
-        });
-  }
+    console.log(this.loginRequest);
 
+    // this.authService.login(this.loginRequest)
+    //   .subscribe(
+    //     (data: LoginResponse) => {
+    //       this.loginResponse = data.model;
+    //       console.log(this.loginResponse);
+    //       localStorage.setItem('authenticationToken', this.loginResponse.token);
+    //       localStorage.setItem('role', this.loginResponse.role);
+    //       localStorage.setItem('ngoId', String(this.loginResponse.id));
+    //       if (localStorage.getItem('role') === 'Company') {
+    //         this.router.navigateByUrl('/marketing/all-ngo');
+    //       } else {
+    //         this.router.navigateByUrl('/donation');
+    //       }
+    //     },
+    //     error => {
+    //       this.loading = false;
+    //     });
+
+    this.http.get('https://jsonplaceholder.typicode.com/comments')
+      .subscribe((r) => {
+        console.log(r);
+        // this.router.navigateByUrl('/marketing/all-ngo');
+        this.router.navigateByUrl('/donation');
+      });
+  }
 }

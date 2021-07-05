@@ -1,52 +1,189 @@
 <div class="container" style="text-align: center">
   <div class="card bg-light mb-3">
-    <div class="card-header" style="text-align: center">
-      <div class="title-container">
-        <h1 class="title code">&lt;details&gt;</h1>
+    <div class="card text-center">
+      <div class="card-header">
+        <h1 style="font-weight: bold; font-family: Meiryo ">Details</h1>
+        <hr>
       </div>
-    </div>
-    <div class="card-body">
-      <div class="card-list">
-        <div class="card">
-          <h3 class="card-title code code-details">&lt;Description&gt;</h3>
-          <p class="card-description">{{ need.description }}</p>
+      <div class="row" *ngIf="need?.workName !== null">
+        <div class="col-sm-4">
+          <div class="card bg-warning">
+            <div class="card-body">
+              <h3 class="card-title">Description</h3>
+              <hr>
+              <p class="card-text">{{ need?.description }}</p>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3 class="card-title code code-summary">&lt;Need Delivery&gt;</h3>
-          <p class="card-description">{{ need.needDelivery }}</p>
+        <div class="col-sm-4">
+          <div class="card bg-warning">
+            <div class="card-body">
+              <h3 class="card-title">Work Name</h3>
+              <hr>
+              <p class="card-text">{{ need?.workName }}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card-list">
-        <div class="card" *ngFor="let hashtag of need.hashtags">
-          <h3 class="card-title code code-summary">&lt;Hash Tags&gt;</h3>
-          <p class="card-description">{{ hashtag.name }}</p>
-        </div>
-      </div>
-      <div class="sample">
-        <div class="sample-title">Amount</div>
-        <div class="sample-code">
-          {{ need.amount }}
-          <div *ngIf="need.amount" class="progress">
-            <div
-              class="progress-bar progress-bar-info progress-bar-striped"
-              role="progressbar"
-              attr.aria-valuenow="{{ progress }}"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              [ngStyle]="{ width: progress + '%' }"
-            >
-              {{ progress }}%
+        <div class="col-sm-4">
+          <div class="card bg-warning">
+            <div class="card-body">
+              <h3 class="card-title">Catalog Name</h3>
+              <hr>
+              <p class="card-text">{{ need?.catalogName }}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="sample">
-        <div class="sample-title">Catalog</div>
-        <div class="sample-code">
-          {{ need.catalog.id }}
+
+      <div class="row" *ngIf="need?.workName == null">
+        <div class="col-sm-6">
+          <div class="card bg-warning">
+            <div class="card-body">
+              <h3 class="card-title">Description</h3>
+              <hr>
+              <p class="card-text">{{ need?.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card bg-warning">
+            <div class="card-body">
+              <h3 class="card-title">Catalog Name</h3>
+              <hr>
+              <p class="card-text">{{ need?.catalogName }}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <button class="btn btn-warning" (click)="viewStatus()">View Status</button>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="card bg-dark" style="color: white">
+            <div class="card-body">
+              <h3 class="card-title">Amount : {{ need?.amount }}</h3>
+              <hr>
+              <p class="card-text">The remaining quantity : {{ need?.progress }}</p>
+              <div *ngIf="need?.amount" class="progress">
+                <div
+                  class="progress-bar progress-bar-info progress-bar-striped"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ need?.progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [ngStyle]="{ width: need?.progress + '%' }"
+                >
+                  {{ need?.progress }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card bg-dark" style="color: white">
+            <div class="card-body">
+              <h3 class="card-title">Date</h3>
+              <hr>
+              <p class="card-text">{{ need?.dueDate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card bg-danger">
+            <div class="card-body">
+              <h3 class="card-title">Need Statues Name</h3>
+              <hr>
+              <p class="card-text">{{ need?.needStatuesName }}</p>
+              <button class="btn btn-warning" (click)="viewStatus()">View Status</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="need?.needStatuesName === 'need delivery'">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card bg-warning">
+              <div class="card-body">
+                <h3 class="card-title">Benefactor Id</h3>
+                <hr>
+                <p class="card-text">{{ need?.benefactorId }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card bg-warning">
+              <div class="card-body">
+                <h3 class="card-title">Neighborhood</h3>
+                <hr>
+                <p class="card-text">{{ need?.neighborhood }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card bg-warning">
+              <div class="card-body">
+                <h3 class="card-title">Benefactor User Name</h3>
+                <hr>
+                <h3 class="card-text">{{ need?.benefactorUserName }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="card bg-dark" style="color: white">
+              <div class="card-body">
+                <h3 class="card-title">State</h3>
+                <hr>
+                <p class="card-text">{{ need?.state }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card bg-dark" style="color: white">
+              <div class="card-body">
+                <h3 class="card-title">County</h3>
+                <hr>
+                <p class="card-text">{{ need?.county }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card bg-dark" style="color: white">
+              <div class="card-body">
+                <h3 class="card-title">City</h3>
+                <hr>
+                <p class="card-text">{{ need?.city }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card bg-dark" style="color: white">
+              <div class="card-body">
+                <h3 class="card-title">street</h3>
+                <hr>
+                <p class="card-text">{{ need?.street }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let hashtag of need?.hashtags">
+          <div class="card bg-light" style="color: white">
+            <div class="card-body">
+              <h3 class="card-title code code-summary">&lt;Hash Tags&gt;</h3>
+              <h4 class="card-description" style="color: black">{{ hashtag }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

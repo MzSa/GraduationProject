@@ -1,9 +1,12 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {ROUTES} from '../../sidebar/sidebar.component';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {WebSocketService} from '../web-socket.service';
 import {ToastrService} from 'ngx-toastr';
+import {AuthService} from '../../auth/auth.service';
+import {NotificationResponse} from '../model/NotificationResponse';
+import {NotificationList} from '../model/notificationList';
+import {Admin} from '../../sidebar/sidebar.component';
 
 @Component({
   moduleId: module.id,
@@ -24,14 +27,20 @@ export class NavbarComponent implements OnInit {
 
   // Notification
   private socket: any;
-  public notifications: any[] = [];
+  // public notifications: any[] = [];
+  public notifications: NotificationResponse[];
   public lengthArray = 0;
+  // private stringifiedData = '{"name" : "ammarBaker", "id": 500}';
+  private parsedJson: any;
+  public UserId = 0;
+  notificationObject: NotificationResponse;
 
   constructor(location: Location,
               private renderer: Renderer2,
               private element: ElementRef,
               private router: Router,
               private webSocketService: WebSocketService,
+              private authService: AuthService,
               private toastr: ToastrService) {
     this.location = location;
     this.nativeElement = element.nativeElement;
@@ -39,19 +48,29 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.listTitles = Admin.filter(listTitle => listTitle);
     var navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     this.router.events.subscribe((event) => {
       this.sidebarClose();
     });
 
+    this.webSocketService.getNotifications().subscribe((data: NotificationList) => {
+      this.notifications = data.list;
+      this.lengthArray = this.notifications.length;
+      console.log(this.notifications);
+    })
 
     this.webSocketService.listen().subscribe((res: string) => {
-      console.log(res);
-      this.notifications.push(res);
-      this.lengthArray = this.notifications.length;
-      this.toastr.warning(res, '', {positionClass: 'toast-top-center'});
+      this.UserId = parseInt(localStorage.getItem('ngoId'));
+      this.notificationObject = JSON.parse(res);
+      console.log(this.notificationObject);
+      console.log(this.UserId);
+      // debugger;
+      if (+this.UserId === +this.notificationObject.id) {
+        console.log('id : ' + this.notificationObject.id, 'content : ' + this.notificationObject.content);
+        this.toastr.warning(this.notificationObject.content, '', {positionClass: 'toast-top-center'});
+      }
     });
   }
 

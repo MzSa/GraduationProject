@@ -1,0 +1,60 @@
+<div class="form_wrapper" style="width: 75%">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Add Sponser</h2>
+    </div>
+    <div class="row clearfix" style="font-weight: bold">
+      <div style="width: 100%">
+        <form [formGroup]="AddSponsorFormCompany" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" formControlName="description" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.description.errors }"/>
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">Description is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="points">Points</label>
+            <input type="number" formControlName="points" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.points.errors }"/>
+            <div *ngIf="submitted && f.points.errors" class="invalid-feedback">
+              <div *ngIf="f.points.errors.required">Points is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="firstNumOfUser">First Num Of User</label>
+            <input type="number" formControlName="firstNumOfUser" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.firstNumOfUser.errors }"/>
+            <div *ngIf="submitted && f.firstNumOfUser.errors" class="invalid-feedback">
+              <div *ngIf="f.firstNumOfUser.errors.required">First Num Of User is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" formControlName="startDate" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }"/>
+            <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+              <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" formControlName="endDate" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }"/>
+            <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+              <div *ngIf="f.endDate.errors.required">End Date is required</div>
+            </div>
+          </div>
+
+          <input class="button" type="submit" value="Add Sponser"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

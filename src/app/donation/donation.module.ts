@@ -30,7 +30,7 @@ const routes: Routes = [
         path: 'details-need/:id', component: DetailsNeedComponent
       },
       {
-        path: 'tracking-request/:id', component: TrackingRequestComponent
+        path: 'tracking-request', component: TrackingRequestComponent
       },
       {
         path: '', redirectTo: 'publish-need', pathMatch: 'full'

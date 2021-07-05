@@ -33,9 +33,10 @@
           <!--            <a ngbDropdownItem href="javascript:void(0)">Something else here</a>-->
           <!--          </div>-->
 
-          <div *ngFor="let notification of notifications" ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink"
+          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink"
                class="dropdown-menu dropdown-menu-right">
-            <a ngbDropdownItem href="javascript:void(0)">{{ notification }}</a>
+            <a *ngFor="let notification of notifications" ngbDropdownItem
+               href="javascript:void(0)" class="card-header">{{ notification.content }}</a>
           </div>
 
         </li>

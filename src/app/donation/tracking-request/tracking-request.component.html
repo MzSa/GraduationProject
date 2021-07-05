@@ -1,5 +1,5 @@
-<div class="row">
-  <!--<div class="col-lg-12 grid-margin">
+<!--<div class="row">
+  &lt;!&ndash;<div class="col-lg-12 grid-margin">
     <div class="card">
       <div class="card-body" *ngFor="let ss of state">
         <div class="container">
@@ -23,33 +23,102 @@
         </div>
       </div>
     </div>
-  </div>-->
+  </div>&ndash;&gt;
+
+  &lt;!&ndash;  <div class="col-md-12 grid-margin">&ndash;&gt;
+  &lt;!&ndash;    <div class="card text-center" style="margin-bottom: 5%">&ndash;&gt;
+  &lt;!&ndash;      <div class="card-title" style="font-weight: bold; margin-top: 2%">status : {{state.status}}</div>&ndash;&gt;
+  &lt;!&ndash;      <div class="card-body">&ndash;&gt;
+  &lt;!&ndash;        <div class="container">&ndash;&gt;
+  &lt;!&ndash;          <ul class="progressbar">&ndash;&gt;
+  &lt;!&ndash;            <li [ngClass]=&ndash;&gt;
+  &lt;!&ndash;                  "{&ndash;&gt;
+  &lt;!&ndash;                active:&ndash;&gt;
+  &lt;!&ndash;                  state.status === 'final' ||&ndash;&gt;
+  &lt;!&ndash;                  state.status === 'need delivery' ||&ndash;&gt;
+  &lt;!&ndash;                  state.status === 'needDonation'&ndash;&gt;
+  &lt;!&ndash;              }"&ndash;&gt;
+  &lt;!&ndash;            >&ndash;&gt;
+  &lt;!&ndash;              Start&ndash;&gt;
+  &lt;!&ndash;            </li>&ndash;&gt;
+  &lt;!&ndash;            <li [ngClass]="{active: state.status === 'final' || state.status === 'need delivery'}">&ndash;&gt;
+  &lt;!&ndash;              need donation&ndash;&gt;
+  &lt;!&ndash;            </li>&ndash;&gt;
+  &lt;!&ndash;            <li [ngClass]="{ active: state.status === 'final' }">Need Delivery</li>&ndash;&gt;
+  &lt;!&ndash;            <li [ngClass]="{ active: state.status === 'final' }">final</li>&ndash;&gt;
+  &lt;!&ndash;          </ul>&ndash;&gt;
+  &lt;!&ndash;        </div>&ndash;&gt;
+  &lt;!&ndash;      </div>&ndash;&gt;
+  &lt;!&ndash;    </div>&ndash;&gt;
+  &lt;!&ndash;  </div>&ndash;&gt;
+
 
   <div class="col-md-12 grid-margin">
-    <div class="card text-center" *ngFor="let ss of state" style="margin-bottom: 5%">
-      <div class="card-title" style="font-weight: bold; margin-top: 2%">status : {{ss.status}}</div>
+    <div class="card">
+      <div class="card-header">
+        <h1>Tracking Request</h1>
+      </div>
       <div class="card-body">
         <div class="container">
           <ul class="progressbar">
             <li [ngClass]=
                   "{
                 active:
-                  ss.status === 'final' ||
-                  ss.status === 'needTransfer' ||
-                  ss.status === 'needDonation'
+                  state.status === 'final' ||
+                  state.status === 'need delivery' ||
+                  state.status === 'needDonation'
               }"
             >
               Start
             </li>
-            <li [ngClass]="{active: ss.status === 'final' || ss.status === 'needTransfer'}">
+            <li [ngClass]="{active: state.status === 'final' || state.status === 'need delivery'}">
               need donation
             </li>
-            <li [ngClass]="{ active: ss.status === 'final' }">need transfer</li>
-            <li [ngClass]="{ active: ss.status === 'final' }">final</li>
+            <li [ngClass]="{ active: state.status === 'final' }">Need Delivery</li>
+            <li [ngClass]="{ active: state.status === 'final' }">final</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+</div>-->
 
+<div class="row" style="text-align: center; margin: 15% auto">
+  <div class="col-sm-12">
+    <div class="card bg-danger">
+      <div class="card-header">
+        <h1 style="font-weight: bold; font-family: Meiryo ">Tracking Request</h1>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card bg-dark">
+            <div class="card-body">
+              <h2 class="card-title" style="color: white; font-weight: bold">Need ID : {{ state.id }}</h2>
+              <hr>
+              <div class="container">
+                <ul class="progressbar">
+                  <li [ngClass]=
+                        "{
+                    active:
+                      state.status === 'final' ||
+                      state.status === 'need delivery' ||
+                      state.status === 'need donation'
+                  }"
+                  >
+                    Start
+                  </li>
+                  <li [ngClass]="{active: state.status === 'final' || state.status === 'need delivery'}">
+                    need donation
+                  </li>
+                  <li [ngClass]="{ active: state.status === 'final' }">Need Delivery</li>
+                  <li [ngClass]="{ active: state.status === 'final' }">final</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

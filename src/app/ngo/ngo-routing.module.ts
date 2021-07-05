@@ -12,8 +12,8 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'ngoTable/home', pathMatch: 'full'},
       {path: 'ngoTable/home', component: HomeComponent},
-      {path: 'ngoTable/:ngoId/view', component: ViewComponent},
-      {path: 'ngoTable/:ngoId/edit', component: EditComponent}
+      {path: 'ngoTable/view/:ngoId', component: ViewComponent},
+      {path: 'ngoTable/edit/:ngoId', component: EditComponent}
     ]
   }
 ];

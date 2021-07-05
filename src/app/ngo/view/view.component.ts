@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Ngo} from '../ngo';
 import {NgoService} from '../ngo.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ResponseByIdModel} from './model/ResponseByIdModel';
+import {ResponseById} from './model/ResponseById';
 
 @Component({
   selector: 'app-view',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ViewComponent implements OnInit {
 
   id: number;
-  ngo: Ngo;
+  ngo: ResponseById;
 
   constructor(private ngoService: NgoService,
               private route: ActivatedRoute,
@@ -20,9 +21,9 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['ngoId'];
-    this.ngoService.find(this.id).subscribe((data: Ngo) => {
-      this.ngo = data;
+    this.ngoService.getById(this.id).subscribe((data: ResponseByIdModel) => {
+      this.ngo = data.model;
+      console.log(this.ngo);
     })
   }
-
 }

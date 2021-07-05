@@ -1,7 +1,7 @@
 import {Catalog} from './catalog';
 
 export interface NeedTypes {
-  catalog: Catalog,
+  catalog: Catalog;
   arabicName: string;
   englishName: string;
 }

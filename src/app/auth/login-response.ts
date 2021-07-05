@@ -1,6 +1,5 @@
+import {Model} from './model';
+
 export interface LoginResponse {
-  login: string;
-  id: number;
-  role: string;
-  token: string;
+  model: Model
 }

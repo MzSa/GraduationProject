@@ -1,0 +1,65 @@
+/* my-loader.component.css */
+.loading-spinner {
+  background-color: #0000001f;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
+
+.loading-spinner img {
+  align-self: end;
+}
+
+.loading-message {
+  text-align: center;
+  align-self: start;
+}
+
+#Content {
+  display: flex;
+}
+
+#spinner_1 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_2 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_3 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_4 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_5 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_6 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_7 {
+  flex: 1;
+  margin: 1%;
+}
+
+#spinner_8 {
+  flex: 1;
+  margin: 1%;
+}

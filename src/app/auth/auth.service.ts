@@ -35,4 +35,27 @@ export class AuthService {
       headers: {'proxy': 'guest'}
     });
   }
+
+  registerCompany(data): Observable<any> {
+    return this.http.post<any>(`http://172.20.10.7:8080/marketing/company/register`, data, {
+      headers: {'proxy': 'guest'}
+    });
+  }
+
+  getJwtToken() {
+    // return this.localStorage.retrieve("authenticationToken");
+    return localStorage.getItem('authenticationToken');
+  }
+
+  getRole() {
+    return localStorage.getItem('role');
+  }
+
+  getUserId() {
+    return parseInt(localStorage.getItem('userId'));
+  }
+
+  logout() {
+    localStorage.clear();
+  }
 }

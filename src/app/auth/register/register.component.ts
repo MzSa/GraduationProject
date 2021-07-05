@@ -18,8 +18,8 @@ export class RegisterComponent implements OnInit {
   registerRequest: RegisterRequest;
   profiles: Profiles;
   goalsObj: Goals;
-
   catalogs: Catalog[];
+  loading = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
 
@@ -168,6 +168,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     this.registerRequest.name = this.RegisterForm.get('name').value;
     this.registerRequest.profiles[0].loginName = this.RegisterForm.get('loginName').value;
     this.registerRequest.profiles[0].password = this.RegisterForm.get('password').value;
@@ -214,8 +215,11 @@ export class RegisterComponent implements OnInit {
 
     console.log(this.registerRequest);
     this.authService.register(this.registerRequest).subscribe((data) => {
-      console.log(data);
-      this.router.navigateByUrl('/donation');
-    });
+        console.log(data);
+        this.router.navigateByUrl('/donation');
+      },
+      error => {
+        this.loading = false;
+      });
   }
 }

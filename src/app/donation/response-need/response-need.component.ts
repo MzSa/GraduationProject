@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {DonationService} from '../donation-service';
+import {ResponseActionNeed} from './model/ResponseActionNeed';
+import {ResponseActionNeedList} from './model/ResponseActionNeedList';
 
 @Component({
   selector: 'app-request-need',
@@ -9,9 +12,12 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class ResponseNeedComponent implements OnInit {
 
   id;
-  public events: any[];
+  action: string;
+  public events: ResponseActionNeedList[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private donationService: DonationService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,27 +29,25 @@ export class ResponseNeedComponent implements OnInit {
         }
       );
 
-    this.events = [
-      {
-        id: 1,
-        name: 'المتبرع الأول',
-        body: 'مكان السكن جمرايا التوصيل مجاني',
-      },
-      {
-        id: 2,
-        name: 'المتبرع الثاني',
-        body: 'مكان السكن برزة',
-      }
-    ];
+    this.donationService.getNeedResponse(this.id).subscribe((data: ResponseActionNeed) => {
+      this.events = data.list;
+    });
   }
 
   accept(id: number) {
-    // alert('Accept from UserId : ', id);
     console.log('id === > ', id);
+    this.action = 'accept';
+    this.donationService.accept(id, this.action).subscribe(res => {
+        this.router.navigateByUrl('/donation');
+      }
+    );
   }
 
   reject(id: number) {
-    // alert('Rejected from UserId : ', id);
     console.log('id === > ', id);
+    this.action = 'reject';
+    this.donationService.accept(id, this.action).subscribe(res => {
+      this.router.navigateByUrl('/donation');
+    });
   }
 }

@@ -12,6 +12,10 @@ export const AppRoutes: Routes = [
     loadChildren: () => import(`./donation/donation.module`).then(m => m.DonationModule)
   },
   {
+    path: 'marketing',
+    loadChildren: () => import(`./marketing/marketing.module`).then(m => m.MarketingModule)
+  },
+  {
     path: 'ngo',
     loadChildren: () => import(`./ngo/ngo.module`).then(m => m.NgoModule)
   },

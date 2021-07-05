@@ -5,6 +5,10 @@ import {Router} from '@angular/router';
 import {DonationService} from '../donation-service';
 import {PublishNeed} from './model/publish-need';
 import {Catalog} from '../../auth/register/model/catalog';
+import {List} from './model/list';
+import {ResponseNeed} from './model/response-need';
+import {ResponseUpdateModel} from './model/response-update-model';
+import {ResponseUpdate} from './model/response-update';
 
 @Component({
   selector: 'app-publish-need',
@@ -15,7 +19,7 @@ export class PublishNeedComponent implements OnInit {
 
   form!: FormGroup;
   modalRef!: BsModalRef;
-  events: any[] = [];
+
   currentEvent: PublishNeed = {
     description: '',
     amount: 0,
@@ -30,27 +34,30 @@ export class PublishNeedComponent implements OnInit {
       }
     ]
   };
-  Events: any[];
+
+  updateNeed: ResponseUpdate = {
+    id: 0,
+    description: '',
+    amount: 0,
+    dueDate: new Date(),
+    needDelivery: false,
+    catalog: {
+      id: 0
+    },
+    hashtags: [
+      {
+        name: ''
+      }
+    ]
+  };
+
+  Events: List[];
 
   modalCallback!: () => void;
-  catalogs: Catalog[] = [
-    {
-      id: 1,
-      name: 'Food'
-    },
-    {
-      id: 2,
-      name: 'Drink'
-    },
-    {
-      id: 3,
-      name: 'Clothes'
-    },
-    {
-      id: 4,
-      name: 'Animal'
-    }
-  ];
+
+  catalogs: Catalog[];
+
+  needId = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -70,91 +77,22 @@ export class PublishNeedComponent implements OnInit {
       hashtags: this.fb.array([]),
     });
 
-    // this.donationService.getcatalogs().subscribe((data: Catalog[]) => {
-    //   console.log(data);
-    //   this.catalogs = data;
-    // });
+    console.log(localStorage.getItem('authenticationToken'));
 
-    this.getEvents();
+    this.donationService.getcatalogs().subscribe((data: Catalog[]) => {
+      console.log(data);
+      this.catalogs = data;
+    });
+
+    this.getAllNeeds();
   }
 
-  private getEvents() {
-    // this.donationService.getEvents().subscribe((response: PublishNeed[]) => {
-    //   this.Events = response;
-    // });
-    this.Events = [
-      {
-        id: 1,
-        description: 'بحاجة ملابس',
-        amount: 20,
-        needDelivery: true,
-        dueDate: Date(),
-        catalog: {
-          id: 1
-        },
-        hashtags: [
-          {
-            name: 'ملابس'
-          },
-          {
-            name: 'طعام'
-          }
-        ]
-      },
-      {
-        id: 2,
-        description: 'بحاجة طعام',
-        amount: 50,
-        needDelivery: false,
-        dueDate: Date(),
-        catalog: {
-          id: 5
-        },
-        hashtags: [
-          {
-            name: 'ملابس'
-          },
-          {
-            name: 'طعام'
-          }
-        ]
-      }
-    ];
+  private getAllNeeds() {
+    this.donationService.getNeeds().subscribe((response: ResponseNeed) => {
+      console.log(response);
+      this.Events = response.list;
+    });
   }
-
-  // private getEvents() {
-  //   this.donationService.getEvents().subscribe((response: any) => {
-  //     console.log('Response', response);
-  //     this.events = response.map(
-  //       (ev: {
-  //         body: any;
-  //         description: any;
-  //         header: any;
-  //         name: any;
-  //         icon: string;
-  //       }) => {
-  //         ev.body = ev.description;
-  //         ev.header = ev.name;
-  //         ev.icon = 'fa-clock-o';
-  //         return ev;
-  //       }
-  //     );
-  //   });
-  // this.events = [
-  //   {
-  //     id: 1,
-  //     header: 'رمضان كريم',
-  //     body: 'مساهمة لتوزيع سلل طعام ومواد غذائية للمحتاجين والمساكين',
-  //     date: Date()
-  //   },
-  //   {
-  //     id: 2,
-  //     header: 'رمضان كريم',
-  //     body: 'مساهمة لتوزيع سلل طعام ومواد غذائية للمحتاجين والمساكين',
-  //     date: Date()
-  //   }
-  // ];
-  // }
 
   addEvent(template: any) {
     this.currentEvent = {
@@ -202,7 +140,7 @@ export class PublishNeedComponent implements OnInit {
       this.currentEvent.hashtags[i].name = (this.form.get('hashtags').value[i]).hashtag;
     }
 
-    const newEvent = {
+    const newNeed = {
       description: this.form.get('description')!.value,
       amount: this.form.get('amount')!.value,
       needDelivery: this.form.get('needDelivery')!.value,
@@ -213,79 +151,64 @@ export class PublishNeedComponent implements OnInit {
       dueDate: this.form.get('date')!.value,
     };
     this.modalRef.hide();
-    console.log(newEvent);
-    // this.donationService.createEvent(newEvent).subscribe(() => {
-    //   this.getEvents();
-    // });
-  }
-
-  private updateForm() {
-    // setTimeout(() => {
-    //   this.form.setValue({
-    //     description: this.currentEvent.description,
-    //     amount: this.currentEvent.amount,
-    //     needDelivery: this.currentEvent.needDelivery,
-    //     date: new Date(this.currentEvent.dueDate),
-    //     catalog: this.currentEvent.catalog.id,
-    //     hashtags: this.currentEvent.hashtags[0].name,
-    //   });
-    // },);
-
-    this.form.patchValue(this.currentEvent);
-
-  }
-
-  editEvent(index: number, template: any) {
-    this.currentEvent = {
-      description: 'ammar',
-      amount: 50,
-      needDelivery: true,
-      dueDate: new Date(),
-      catalog: {
-        id: 1
-      },
-      hashtags: [
-        {
-          name: 'foooooood'
-        }
-      ]
-    };
-    this.updateForm();
-    this.modalCallback = this.updateEvent.bind(this);
-    this.modalRef = this.modalService.show(template);
-  }
-
-  updateEvent() {
-
-    for (let i = 0; i < this.hashtags().length; i++) {
-      this.currentEvent.hashtags[i] = {
-        name: ''
-      };
-      this.currentEvent.hashtags[i].name = (this.form.get('hashtags').value[i]).hashtag;
-    }
-
-    const eventData = {
-      description: this.form.get('description')!.value,
-      amount: this.form.get('amount')!.value,
-      needDelivery: this.form.get('needDelivery')!.value,
-      catalog: {
-        id: this.form.get('catalog')!.value
-      },
-      hashtags: this.currentEvent.hashtags,
-      dueDate: this.form.get('date')!.value,
-    };
-
-    const id = 105;
-
-    this.modalRef.hide();
-    this.donationService.updateEvent(id, eventData).subscribe(() => {
-      this.getEvents();
+    console.log(newNeed);
+    this.donationService.createNeed(newNeed).subscribe(() => {
+      this.getAllNeeds();
     });
   }
 
-  deleteEvent(id: number) {
-    this.donationService.deleteEvent(id).subscribe(() => {
-      this.getEvents();
+  private updateForm() {
+    this.form.setValue({
+      description: this.updateNeed.description,
+      amount: this.updateNeed.amount,
+      needDelivery: this.updateNeed.needDelivery,
+      date: new Date(this.updateNeed.dueDate),
+      catalog: this.updateNeed.catalog.id,
+      hashtags: this.updateNeed.hashtags[0].name
+    });
+  }
+
+  editNeed(id: number, template: any) {
+
+    this.donationService.getNeedById(id).subscribe((res: ResponseUpdateModel) => {
+      this.updateNeed = res.model;
+      console.log(this.updateNeed);
+      this.updateForm();
+    });
+    this.modalCallback = this.updateNeedById.bind(this.currentEvent);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateNeedById() {
+    for (let i = 0; i < (this.hashtags()).length; i++) {
+      this.updateNeed.hashtags[i] = {
+        name: ''
+      };
+      this.updateNeed.hashtags[i].name = (this.form.get('hashtags').value[i]).hashtag;
+    }
+
+    const needData = {
+      id: this.updateNeed.id,
+      description: this.form.get('description')!.value,
+      amount: this.form.get('amount')!.value,
+      needDelivery: this.form.get('needDelivery')!.value,
+      catalog: {
+        id: this.form.get('catalog')!.value
+      },
+      hashtags: this.updateNeed.hashtags,
+      dueDate: this.form.get('date')!.value,
+    };
+
+
+    this.modalRef.hide();
+    this.donationService.updateNeed(needData).subscribe(() => {
+      this.getAllNeeds();
+    });
+  }
+
+  deleteNeed(id: number) {
+    this.donationService.deleteNeedById(id).subscribe(() => {
+      this.getAllNeeds();
     });
   }
 

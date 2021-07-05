@@ -1,22 +1,64 @@
-<div class="container">
-  <h1>View Ngo</h1>
+<!--<div class="container">-->
+<!--  <h1>View Ngo</h1>-->
 
-  <a href="#" routerLink="/ngo/ngoTable/home" class="btn btn-primary">Back</a>
+<!--  <a href="#" routerLink="/ngo/ngoTable/home" class="btn btn-primary">Back</a>-->
 
-  <div>
-    <strong>ID:</strong>
-    <p>{{ ngo.id }}</p>
+<!--  <div>-->
+<!--    <strong>ID:</strong>-->
+<!--    <p>{{ ngo.id }}</p>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <strong>Title:</strong>-->
+<!--    <p>{{ ngo.title }}</p>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <strong>Body:</strong>-->
+<!--    <p>{{ ngo.body }}</p>-->
+<!--  </div>-->
+
+<!--</div>-->
+<!--You will see preview as li-->
+
+
+<div class="container" style="text-align: center">
+  <div class="card bg-light mb-3">
+    <div class="card-header" style="text-align: center">
+      <div class="title-container">
+        <h1 class="title code">&lt;details&gt;</h1>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-list">
+        <div class="card">
+          <h3 class="card-title code code-details">&lt;ID&gt;</h3>
+          <p class="card-description">{{ ngo.id }}</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
+          <p class="card-description">{{ ngo.description }}</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
+          <p class="card-description">{{ ngo.description }}</p>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="card">
+          <h3 class="card-title code code-details">&lt;ID&gt;</h3>
+          <p class="card-description">{{ ngo.id }}</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
+          <p class="card-description">{{ ngo.description }}</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
+          <p class="card-description">{{ ngo.description }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <strong>Title:</strong>
-    <p>{{ ngo.title }}</p>
-  </div>
-
-  <div>
-    <strong>Body:</strong>
-    <p>{{ ngo.body }}</p>
-  </div>
-
 </div>
-You will see preview as li
+

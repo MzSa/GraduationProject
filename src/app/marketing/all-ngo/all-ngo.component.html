@@ -1,0 +1,19 @@
+<div class="form_wrapper" style="width: 80%; margin: auto">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>All NGO</h2>
+    </div>
+    <ul class="list-group">
+      <a *ngFor="let ngo of ngos"
+         class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        <div class="flex-column">
+          NGO Name : {{ ngo.name }}
+          <p><small>mobile : {{ ngo.mobileNumber }}</small></p>
+          <span class="badge badge-warning badge-pill">{{ ngo.description }}</span>
+        </div>
+        <button class="btn btn-success" (click)="addSponser(ngo.id)">Add Sponser</button>
+      </a>
+    </ul>
+  </div>
+</div>
+

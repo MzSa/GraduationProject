@@ -1,21 +1,44 @@
 <div class="container">
 
-  <table class="table table-bordered">
+  <table class="table table-bordered" style="text-align: center">
     <tr>
       <th>ID</th>
-      <th>Title</th>
-      <th>Body</th>
+      <th>Name</th>
+      <th>Governorate</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>MobileNumber</th>
+      <th>Email</th>
+      <th>WebSite</th>
+      <th>Description</th>
       <th>Action</th>
     </tr>
     <tr *ngFor="let ngo of ngos">
       <td>{{ ngo.id }}</td>
-      <td>{{ ngo.title }}</td>
-      <td>{{ ngo.body }}</td>
+      <td>{{ ngo.name }}</td>
+      <td>{{ ngo.governorate }}</td>
+      <td>{{ ngo.city }}</td>
+      <td>{{ ngo.address }}</td>
+      <td>{{ ngo.mobileNumber }}</td>
+      <td>{{ ngo.email }}</td>
+      <td>{{ ngo.webSite }}</td>
+      <td>{{ ngo.description }}</td>
       <td>
-        <a style="padding: 2%" href="#" [routerLink]="['/ngo/ngoTable/', ngo.id, 'view']" class="btn btn-info">View</a>
-        <a style="padding: 2%" href="#" [routerLink]="['/ngo/ngoTable/', ngo.id, 'edit']"
-           class="btn btn-primary">Edit</a>
-        <button style="padding: 2%" type="button" (click)="deleteNgo(ngo.id)" class="btn btn-danger">Delete</button>
+        <tr>
+            <td>
+              <button class="btn btn-info" (click)="viewNgo(ngo.id)">View</button>
+            </td>
+            <td>
+              <button class="btn btn-success" (click)="editNgo(ngo.id)">Edit</button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="DeleteNgo(ngo.id)">Delete</button>
+            </td>
+        </tr>
+<!--        <a style="padding: 2%" href="#" [routerLink]="['/ngo/ngoTable/', ngo.id, 'view']" class="btn btn-info">View</a>-->
+<!--        <a style="padding: 2%" href="#" [routerLink]="['/ngo/ngoTable/', ngo.id, 'edit']"-->
+<!--           class="btn btn-primary">Edit</a>-->
+<!--        <button style="padding: 2%" type="button" (click)="deleteNgo(ngo.id)" class="btn btn-danger">Delete</button>-->
       </td>
     </tr>
   </table>
