@@ -22,7 +22,7 @@ export class NgoService {
   }
 
   getAll(): Observable<NgoList> {
-    return this.httpClient.get<NgoList>(`http://192.168.0.43:8080/ngo/NGO/all`)
+    return this.httpClient.get<NgoList>(`http://172.20.10.7:8080/ngo/NGO/all`)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -31,7 +31,7 @@ export class NgoService {
   getById(id): Observable<ResponseByIdModel> {
     const params = new HttpParams()
       .append('id', String(id))
-    return this.httpClient.get<ResponseByIdModel>(`http://192.168.0.43:8080/ngo/NGO/by-id`, {params})
+    return this.httpClient.get<ResponseByIdModel>(`http://172.20.10.7:8080/ngo/NGO/by-id`, {params})
       .pipe(
         catchError(this.errorHandler)
       )

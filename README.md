@@ -107,7 +107,7 @@ paper-dashboard-angular
 │   │   │   │   └── maps.component.ts
 │   │   │   ├── notifications
 │   │   │   │   ├── notifications.component.html
-│   │   │   │   └── notifications.component.ts
+│   │   │   │   └── advertising.component.ts
 │   │   │   ├── table
 │   │   │   │   ├── table.component.html
 │   │   │   │   └── table.component.ts

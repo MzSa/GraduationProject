@@ -85,14 +85,14 @@
 
 <div class="row" style="text-align: center; margin: 15% auto">
   <div class="col-sm-12">
-    <div class="card bg-danger">
+    <div class="card bg-success" style="color: white">
       <div class="card-header">
         <h1 style="font-weight: bold; font-family: Meiryo ">Tracking Request</h1>
         <hr>
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="card bg-dark">
+          <div class="card bg-info">
             <div class="card-body">
               <h2 class="card-title" style="color: white; font-weight: bold">Need ID : {{ state.id }}</h2>
               <hr>
@@ -101,18 +101,18 @@
                   <li [ngClass]=
                         "{
                     active:
-                      state.status === 'final' ||
+                      state.status === 'terminate' ||
                       state.status === 'need delivery' ||
-                      state.status === 'need donation'
+                      state.status === 'need donate'
                   }"
                   >
                     Start
                   </li>
-                  <li [ngClass]="{active: state.status === 'final' || state.status === 'need delivery'}">
+                  <li [ngClass]="{active: state.status === 'terminate' || state.status === 'need delivery'}">
                     need donation
                   </li>
-                  <li [ngClass]="{ active: state.status === 'final' }">Need Delivery</li>
-                  <li [ngClass]="{ active: state.status === 'final' }">final</li>
+                  <li [ngClass]="{ active: state.status === 'terminate' }">Need Delivery</li>
+                  <li [ngClass]="{ active: state.status === 'terminate' }">final</li>
                 </ul>
               </div>
             </div>

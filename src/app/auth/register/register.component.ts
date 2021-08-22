@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   profiles: Profiles;
   goalsObj: Goals;
   catalogs: Catalog[];
-  loading = false;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
 
@@ -86,6 +86,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.RegisterForm.controls;
+  }
+
   onCheckboxChange(e) {
     const checkArray: FormArray = this.RegisterForm.get('checkArray') as FormArray;
 
@@ -94,7 +99,7 @@ export class RegisterComponent implements OnInit {
     } else {
       let i = 0;
       checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
+        if (item.value === e.target.value) {
           checkArray.removeAt(i);
           return;
         }
@@ -168,7 +173,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = true;
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.RegisterForm.invalid) {
+      return;
+    }
+
     this.registerRequest.name = this.RegisterForm.get('name').value;
     this.registerRequest.profiles[0].loginName = this.RegisterForm.get('loginName').value;
     this.registerRequest.profiles[0].password = this.RegisterForm.get('password').value;
@@ -214,12 +225,12 @@ export class RegisterComponent implements OnInit {
     }
 
     console.log(this.registerRequest);
-    this.authService.register(this.registerRequest).subscribe((data) => {
+/*    this.authService.register(this.registerRequest).subscribe((data) => {
         console.log(data);
         this.router.navigateByUrl('/donation');
       },
       error => {
-        this.loading = false;
-      });
+        alert('Sorry, the registration process did not complete correctly');
+      });*/
   }
 }

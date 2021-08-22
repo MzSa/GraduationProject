@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!--<div class="wrapper">
   <div class="sidebar" data-color="white" data-active-color="danger">
     <sidebar-cmp></sidebar-cmp>
   </div>
@@ -196,7 +196,196 @@
       </div>
     </div>
 
-    <!--    <footer-cmp></footer-cmp>-->
+    &lt;!&ndash;    <footer-cmp></footer-cmp>&ndash;&gt;
+  </div>
+</div>-->
+
+
+<!--******************************************************************************************-->
+<div class="wrapper">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="form_wrapper" style="width: 100%">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Register Ngo</h2>
+      </div>
+      <div class="row clearfix" style="font-weight: bold">
+        <div style="width: 100%">
+          <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" formControlName="name" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name"/>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" formControlName="loginName" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.loginName.errors }" placeholder="Login Name"/>
+                <div *ngIf="submitted && f.loginName.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.loginName.errors.required">Login Name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-key"></i></span>
+                <input type="password" formControlName="password" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="governorate" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.governorate.errors }" placeholder="Governorate"/>
+                <div *ngIf="submitted && f.governorate.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.governorate.errors.required">Governorate is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="city" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="City"/>
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.city.errors.required">City is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="address" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address"/>
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.address.errors.required">Address is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-mobile"></i></span>
+                <input type="text" formControlName="mobileNumber" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" placeholder="Mobile Number"/>
+                <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                <input type="email" formControlName="email" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                <input type="email" formControlName="webSite" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.webSite.errors }" placeholder="Web Site"/>
+                <div *ngIf="submitted && f.webSite.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.webSite.errors.required">Web Site is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-file-text"></i></span>
+                <input type="email" formControlName="description" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.description.errors }" placeholder="Description"/>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.description.errors.required">Description is required</div>
+                </div>
+              </div>
+            </div>
+
+            <table class="table table-bordered" formArrayName="goals">
+              <tr>
+                <th colspan="2">Add Goals:</th>
+                <th width="150px">
+                  <button type="button" (click)="addGoals()" class="btn btn-primary">Add More</button>
+                </th>
+              </tr>
+              <tr *ngFor="let goal of goals().controls; let i=index" [formGroupName]="i">
+                <td colspan="2">
+                  Goal :
+                  <input type="text" formControlName="goal" class="form-control">
+                </td>
+                <td>
+                  <button (click)="removeGoals(i)" class="btn btn-danger">Remove</button>
+                </td>
+              </tr>
+            </table>
+
+            <table class="table table-bordered" formArrayName="hashtags">
+              <tr>
+                <th colspan="2">Add hashtags:</th>
+                <th width="150px">
+                  <button type="button" (click)="addHashTags()" class="btn btn-primary">Add More</button>
+                </th>
+              </tr>
+              <tr *ngFor="let hashtag of hashtags().controls; let i=index" [formGroupName]="i">
+                <td colspan="2">
+                  Hash Tag :
+                  <input type="text" formControlName="hashtag" class="form-control">
+                </td>
+                <td>
+                  <button (click)="removeHashTags(i)" class="btn btn-danger">Remove</button>
+                </td>
+              </tr>
+            </table>
+
+            <div *ngFor="let catalog of catalogs; let i=index">
+              <label>
+                <input type="checkbox" [value]="catalog.id" (change)="onCheckboxChange($event)"/>
+                {{catalog.name}}
+              </label>
+            </div>
+
+            <table class="table table-bordered" formArrayName="services">
+              <tr>
+                <th colspan="2">Add New Service:</th>
+                <th width="150px">
+                  <button type="button" (click)="addService()" class="btn btn-primary">Add More</button>
+                </th>
+              </tr>
+              <tr *ngFor="let service of services().controls; let i=index" [formGroupName]="i">
+                <td colspan="2">
+                  New Service :
+                  <input type="text" formControlName="arabicName" class="form-control"
+                         placeholder="name of service in arabic">
+                  <br>
+                  <input type="text" formControlName="englishName" class="form-control"
+                         placeholder="name of service in english">
+                </td>
+                <td>
+                  <button (click)="removeService(i)" class="btn btn-danger">Remove</button>
+                </td>
+              </tr>
+            </table>
+
+            <input class="button" type="submit" value="Register"/>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<!--<fixedplugin-cmp></fixedplugin-cmp>-->
+
+<fixedplugin-cmp></fixedplugin-cmp>

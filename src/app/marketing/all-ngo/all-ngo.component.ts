@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class AllNgoComponent implements OnInit {
 
+  /*  ngos: NgoResponse[];*/
   ngos: NgoResponse[] = [
     {
       id: 1,
@@ -46,15 +47,19 @@ export class AllNgoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.ngoService.getAll().subscribe((data: NgoList) => {
-    //   this.ngos = data.list;
-    //   console.log(this.ngos);
-    // });
+    /*    this.ngoService.getAll().subscribe((data: NgoList) => {
+          this.ngos = data.list;
+          console.log(this.ngos);
+        });*/
   }
 
   addSponser(id: number) {
     console.log(id);
     this.router.navigate(['marketing/add-sponsor', id]);
+  }
+
+  viewDonation(id: number) {
+    console.log(id);
   }
 
 }

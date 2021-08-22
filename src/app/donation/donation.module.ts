@@ -14,6 +14,9 @@ import {FixedPluginModule} from '../shared/fixedplugin/fixedplugin.module';
 import {ResponseNeedComponent} from './response-need/response-need.component';
 import {TrackingRequestComponent} from './tracking-request/tracking-request.component';
 import {DetailsNeedComponent} from './details-need/details-need.component';
+import {StatisticsComponent} from './statistics/statistics.component';
+import {SettingComponent} from './setting/setting.component';
+import {StatisticUserComponent} from './statistic-user/statistic-user.component';
 
 const routes: Routes = [
   {
@@ -21,19 +24,37 @@ const routes: Routes = [
     component: DonationHomeComponent,
     children: [
       {
-        path: 'publish-need', component: PublishNeedComponent
+        path: 'publish-need',
+        component: PublishNeedComponent
       },
       {
-        path: 'responses-need/:id', component: ResponseNeedComponent
+        path: 'responses-need/:id',
+        component: ResponseNeedComponent
       },
       {
-        path: 'details-need/:id', component: DetailsNeedComponent
+        path: 'details-need/:id',
+        component: DetailsNeedComponent
       },
       {
-        path: 'tracking-request', component: TrackingRequestComponent
+        path: 'tracking-request',
+        component: TrackingRequestComponent
       },
       {
-        path: '', redirectTo: 'publish-need', pathMatch: 'full'
+        path: 'statistics-ngo',
+        component: StatisticsComponent
+      },
+      {
+        path: 'statistics-user',
+        component: StatisticUserComponent
+      },
+      {
+        path: 'setting',
+        component: SettingComponent
+      },
+      {
+        path: '',
+        redirectTo: 'publish-need',
+        pathMatch: 'full'
       }
     ]
   },
@@ -45,7 +66,10 @@ const routes: Routes = [
     DonationHomeComponent,
     ResponseNeedComponent,
     TrackingRequestComponent,
-    DetailsNeedComponent
+    DetailsNeedComponent,
+    StatisticsComponent,
+    SettingComponent,
+    StatisticUserComponent
   ],
   imports: [
     CommonModule,

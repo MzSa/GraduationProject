@@ -59,7 +59,7 @@
 
       <div class="row">
         <div class="col-sm-8">
-          <div class="card bg-dark" style="color: white">
+          <div class="card bg-success" style="color: white">
             <div class="card-body">
               <h3 class="card-title">Amount : {{ need?.amount }}</h3>
               <hr>
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="card bg-dark" style="color: white">
+          <div class="card bg-success" style="color: white">
             <div class="card-body">
               <h3 class="card-title">Date</h3>
               <hr>
@@ -92,12 +92,12 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="card bg-danger">
+          <div class="card bg-info">
             <div class="card-body">
               <h3 class="card-title">Need Statues Name</h3>
               <hr>
               <p class="card-text">{{ need?.needStatuesName }}</p>
-              <button class="btn btn-warning" (click)="viewStatus()">View Status</button>
+              <button class="btn btn-neutral" (click)="viewStatus()">View Status</button>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
       <div *ngIf="need?.needStatuesName === 'need delivery'">
         <div class="row">
           <div class="col-sm-4">
-            <div class="card bg-warning">
+            <div class="card bg-info">
               <div class="card-body">
                 <h3 class="card-title">Benefactor Id</h3>
                 <hr>
@@ -115,7 +115,7 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="card bg-warning">
+            <div class="card bg-info">
               <div class="card-body">
                 <h3 class="card-title">Neighborhood</h3>
                 <hr>
@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="card bg-warning">
+            <div class="card bg-info">
               <div class="card-body">
                 <h3 class="card-title">Benefactor User Name</h3>
                 <hr>
@@ -136,7 +136,7 @@
 
         <div class="row">
           <div class="col-sm-3">
-            <div class="card bg-dark" style="color: white">
+            <div class="card bg-warning" style="color: white">
               <div class="card-body">
                 <h3 class="card-title">State</h3>
                 <hr>
@@ -145,7 +145,7 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="card bg-dark" style="color: white">
+            <div class="card bg-warning" style="color: white">
               <div class="card-body">
                 <h3 class="card-title">County</h3>
                 <hr>
@@ -154,7 +154,7 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="card bg-dark" style="color: white">
+            <div class="card bg-warning" style="color: white">
               <div class="card-body">
                 <h3 class="card-title">City</h3>
                 <hr>
@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="card bg-dark" style="color: white">
+            <div class="card bg-warning" style="color: white">
               <div class="card-body">
                 <h3 class="card-title">street</h3>
                 <hr>

@@ -65,9 +65,9 @@ export class RegisterCompanyComponent implements OnInit {
       ]
     };
     console.log(objectData);
-    // this.authService.registerCompany(objectData).subscribe((data) => {
-    //   console.log(data);
-    //   this.router.navigateByUrl('/donation');
-    // });
+    this.authService.registerCompany(objectData).subscribe((data) => {
+      console.log(data);
+      this.router.navigateByUrl('/donation');
+    });
   }
 }

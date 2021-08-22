@@ -6,30 +6,34 @@
         <div class="col-sm-12 col-md">
           <ngx-timeline [events]="events">
             <ng-template let-event let-index="rowIndex" timelineBody>
-              <div class="card bg-light mb-3">
-                <div class="card-header" style="text-align: center">
-                  <h3>{{ event.userName }}</h3>
+              <div *ngIf="event.statues == 'Accepted'">
+                <div class="card bg-light mb-3">
+                  <div class="card-header" style="text-align: center">
+                    <h3>{{ event.userName }}</h3>
+                  </div>
+                  <div class="card-body" style="text-align: center">
+                    <h3>{{ event.amount }}</h3>
+                  </div>
                 </div>
-                <div class="card-body" style="text-align: center">
-                  <h3>{{ event.amount }}</h3>
-                </div>
-              </div>
-              <div class="button-row">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="accept(event.id)"
-                >
-                  <i class="fa fa-edit"></i> Accept
-                </button>
+                <div class="button-row">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="accept(event.id)"
+                    [disabled]="event.statues !== 'Rejected'"
+                  >
+                    <i class="fa fa-edit"></i> Accept
+                  </button>
 
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  (click)="reject(event.id)"
-                >
-                  <i class="fa fa-trash"></i> Reject
-                </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="reject(event.id)"
+                    [disabled]="event.statues !== 'Rejected'"
+                  >
+                    <i class="fa fa-trash"></i> Reject
+                  </button>
+                </div>
               </div>
             </ng-template>
           </ngx-timeline>

@@ -30,6 +30,7 @@ export class DetailsNeedComponent implements OnInit {
       );
     this.donationService.getNeedByIdForDetails(this.id).subscribe((res: NeedByIdModel) => {
       this.need = res.model;
+      this.need.progress = Math.round(100 * res.model.progress / res.model.amount);
       console.log(this.need);
       console.log(this.need.hashtags);
     });

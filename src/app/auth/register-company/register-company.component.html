@@ -1,115 +1,122 @@
-<div class="form_wrapper" style="width: 100%">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Register Company</h2>
-    </div>
-    <div class="row clearfix" style="font-weight: bold">
-      <div style="width: 100%">
-        <form [formGroup]="RegisterFormCompany" (ngSubmit)="onSubmit()">
+<div class="wrapper">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="form_wrapper" style="width: 100%">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Register Company</h2>
+      </div>
+      <div class="row clearfix" style="font-weight: bold">
+        <div style="width: 100%">
+          <form [formGroup]="RegisterFormCompany" (ngSubmit)="onSubmit()">
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
-              <input type="text" formControlName="name" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name"/>
-              <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.name.errors.required">Name is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" formControlName="name" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name"/>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
-              <input type="text" formControlName="loginName" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.loginName.errors }" placeholder="Login Name"/>
-              <div *ngIf="submitted && f.loginName.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.loginName.errors.required">Login Name is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" formControlName="loginName" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.loginName.errors }" placeholder="Login Name"/>
+                <div *ngIf="submitted && f.loginName.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.loginName.errors.required">Login Name is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
-              <input type="text" formControlName="governorate" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.governorate.errors }" placeholder="Governorate"/>
-              <div *ngIf="submitted && f.governorate.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.governorate.errors.required">Governorate is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="governorate" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.governorate.errors }" placeholder="Governorate"/>
+                <div *ngIf="submitted && f.governorate.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.governorate.errors.required">Governorate is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
-              <input type="text" formControlName="city" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="City"/>
-              <div *ngIf="submitted && f.city.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.city.errors.required">City is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="city" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="City"/>
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.city.errors.required">City is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
-              <input type="text" formControlName="address" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address"/>
-              <div *ngIf="submitted && f.address.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.address.errors.required">Address is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+                <input type="text" formControlName="address" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address"/>
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.address.errors.required">Address is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-mobile"></i></span>
-              <input type="text" formControlName="mobileNumber" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" placeholder="Mobile Number"/>
-              <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-mobile"></i></span>
+                <input type="text" formControlName="mobileNumber" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" placeholder="Mobile Number"/>
+                <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-key"></i></span>
-              <input type="password" formControlName="password" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.password.errors.required">Password is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-key"></i></span>
+                <input type="password" formControlName="password" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-              <input type="email" formControlName="email" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email"/>
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.email.errors.required">Email is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                <input type="email" formControlName="email" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-              <input type="email" formControlName="webSite" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.webSite.errors }" placeholder="Web Site"/>
-              <div *ngIf="submitted && f.webSite.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.webSite.errors.required">Web Site is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                <input type="email" formControlName="webSite" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.webSite.errors }" placeholder="Web Site"/>
+                <div *ngIf="submitted && f.webSite.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.webSite.errors.required">Web Site is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div class="input_field"><span><i aria-hidden="true" class="fa fa-file-text"></i></span>
-              <input type="email" formControlName="description" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.description.errors }" placeholder="Description"/>
-              <div *ngIf="submitted && f.description.errors" class="invalid-feedback" style="margin-left: 5%">
-                <div *ngIf="f.description.errors.required">Description is required</div>
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-file-text"></i></span>
+                <input type="email" formControlName="description" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.description.errors }" placeholder="Description"/>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.description.errors.required">Description is required</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <input class="button" type="submit" value="Register"/>
-        </form>
+            <input class="button" type="submit" value="Register"/>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<fixedplugin-cmp></fixedplugin-cmp>

@@ -1,27 +1,3 @@
-<!--<div class="container">-->
-<!--  <h1>View Ngo</h1>-->
-
-<!--  <a href="#" routerLink="/ngo/ngoTable/home" class="btn btn-primary">Back</a>-->
-
-<!--  <div>-->
-<!--    <strong>ID:</strong>-->
-<!--    <p>{{ ngo.id }}</p>-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <strong>Title:</strong>-->
-<!--    <p>{{ ngo.title }}</p>-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <strong>Body:</strong>-->
-<!--    <p>{{ ngo.body }}</p>-->
-<!--  </div>-->
-
-<!--</div>-->
-<!--You will see preview as li-->
-
-
 <div class="container" style="text-align: center">
   <div class="card bg-light mb-3">
     <div class="card-header" style="text-align: center">
@@ -30,31 +6,47 @@
       </div>
     </div>
     <div class="card-body">
-      <div class="card-list">
-        <div class="card">
+      <div class="row" style="text-align: center; align-items: center; margin: auto">
+        <div class="card col-sm-5">
           <h3 class="card-title code code-details">&lt;ID&gt;</h3>
           <p class="card-description">{{ ngo.id }}</p>
         </div>
-        <div class="card">
-          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
-          <p class="card-description">{{ ngo.description }}</p>
-        </div>
-        <div class="card">
-          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
-          <p class="card-description">{{ ngo.description }}</p>
+        <div class="card col-sm-5" style="margin-left: 15%">
+          <h3 class="card-title code code-summary">&lt;Name&gt;</h3>
+          <p class="card-description">{{ ngo.name }}</p>
         </div>
       </div>
-      <div class="card-list">
-        <div class="card">
-          <h3 class="card-title code code-details">&lt;ID&gt;</h3>
-          <p class="card-description">{{ ngo.id }}</p>
+      <div class="card-list row">
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-details">&lt;Governorate&gt;</h3>
+          <p class="card-description">{{ ngo.governorate }}</p>
         </div>
-        <div class="card">
-          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
-          <p class="card-description">{{ ngo.description }}</p>
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-summary">&lt;City&gt;</h3>
+          <p class="card-description">{{ ngo.city }}</p>
         </div>
-        <div class="card">
-          <h3 class="card-title code code-summary">&lt;Description&gt;</h3>
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-summary">&lt;Address&gt;</h3>
+          <p class="card-description">{{ ngo.address }}</p>
+        </div>
+      </div>
+      <div class="card-list row">
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-details">&lt;Mobile Number&gt;</h3>
+          <p class="card-description">{{ ngo.mobileNumber }}</p>
+        </div>
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-summary">&lt;Email&gt;</h3>
+          <p class="card-description">{{ ngo.email }}</p>
+        </div>
+        <div class="card col-sm-4" style="margin-left: 0%">
+          <h3 class="card-title code code-summary">&lt;Web Site&gt;</h3>
+          <p class="card-description">{{ ngo.webSite }}</p>
+        </div>
+      </div>
+      <div class="card-list" style="width: 100%; text-align: center; align-items: center; margin: auto">
+        <div class="card" style="width: 100%">
+          <h3 class="card-title code code-details">&lt;Description&gt;</h3>
           <p class="card-description">{{ ngo.description }}</p>
         </div>
       </div>

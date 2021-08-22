@@ -57,30 +57,25 @@ export class SignInComponent implements OnInit {
     this.loginRequest.login = this.f.username.value;
     this.loginRequest.password = this.f.password.value;
     console.log(this.loginRequest);
-
-    // this.authService.login(this.loginRequest)
-    //   .subscribe(
-    //     (data: LoginResponse) => {
-    //       this.loginResponse = data.model;
-    //       console.log(this.loginResponse);
-    //       localStorage.setItem('authenticationToken', this.loginResponse.token);
-    //       localStorage.setItem('role', this.loginResponse.role);
-    //       localStorage.setItem('ngoId', String(this.loginResponse.id));
-    //       if (localStorage.getItem('role') === 'Company') {
-    //         this.router.navigateByUrl('/marketing/all-ngo');
-    //       } else {
-    //         this.router.navigateByUrl('/donation');
-    //       }
-    //     },
-    //     error => {
-    //       this.loading = false;
-    //     });
-
-    this.http.get('https://jsonplaceholder.typicode.com/comments')
-      .subscribe((r) => {
-        console.log(r);
-        // this.router.navigateByUrl('/marketing/all-ngo');
-        this.router.navigateByUrl('/donation');
-      });
+    // this.router.navigateByUrl('/donation');
+    this.authService.login(this.loginRequest)
+      .subscribe(
+        (data: LoginResponse) => {
+          this.loginResponse = data.model;
+          console.log(this.loginResponse);
+          localStorage.setItem('authenticationToken', this.loginResponse.token);
+          localStorage.setItem('role', this.loginResponse.role);
+          localStorage.setItem('ngoId', String(this.loginResponse.id));
+          if (localStorage.getItem('role') === 'company') {
+            this.router.navigateByUrl('/marketing/all-ngo');
+          } else if (localStorage.getItem('role') === 'admin') {
+            this.router.navigateByUrl('/donation');
+          } else {
+            this.router.navigateByUrl('/donation');
+          }
+        },
+        error => {
+          this.loading = false;
+        });
   }
 }

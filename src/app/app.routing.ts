@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
 
 export const AppRoutes: Routes = [
@@ -18,6 +17,10 @@ export const AppRoutes: Routes = [
   {
     path: 'ngo',
     loadChildren: () => import(`./ngo/ngo.module`).then(m => m.NgoModule)
+  },
+  {
+    path: 'company',
+    loadChildren: () => import(`./company/company.module`).then(m => m.CompanyModule)
   },
   {
     path: 'pages',

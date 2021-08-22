@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {NgoResponse} from './model/NgoResponse';
 import {NgoService} from '../ngo.service';
 import {Router} from '@angular/router';
 import {NgoList} from './model/NgoList';
@@ -11,7 +10,64 @@ import {NgoList} from './model/NgoList';
 })
 export class HomeComponent implements OnInit {
 
-  ngos: NgoResponse[];
+  /*  ngos: NgoResponse[];*/
+  ngos: any = [
+    {
+      id: 1,
+      name: 'Amara',
+      governorate: 'Damascus',
+      city: 'Sham',
+      address: 'Damascus/Sham/Jmraya',
+      mobileNumber: '01234567',
+      email: 'Amara@yahoo.com',
+      webSite: 'Amara@yahoo.com',
+      description: 'donation food and drink'
+    },
+    {
+      id: 2,
+      name: 'Amara',
+      governorate: 'Damascus',
+      city: 'Sham',
+      address: 'Damascus/Sham/Jmraya',
+      mobileNumber: '01234567',
+      email: 'Amara@yahoo.com',
+      webSite: 'Amara@yahoo.com',
+      description: 'donation food and drink'
+    },
+    {
+      id: 3,
+      name: 'Amara',
+      governorate: 'Damascus',
+      city: 'Sham',
+      address: 'Damascus/Sham/Jmraya',
+      mobileNumber: '01234567',
+      email: 'Amara@yahoo.com',
+      webSite: 'Amara@yahoo.com',
+      description: 'donation food and drink'
+    },
+    {
+      id: 4,
+      name: 'Amara',
+      governorate: 'Damascus',
+      city: 'Sham',
+      address: 'Damascus/Sham/Jmraya',
+      mobileNumber: '01234567',
+      email: 'Amara@yahoo.com',
+      webSite: 'Amara@yahoo.com',
+      description: 'donation food and drink'
+    },
+    {
+      id: 5,
+      name: 'Amara',
+      governorate: 'Damascus',
+      city: 'Sham',
+      address: 'Damascus/Sham/Jmraya',
+      mobileNumber: '01234567',
+      email: 'Amara@yahoo.com',
+      webSite: 'Amara@yahoo.com',
+      description: 'donation food and drink'
+    }
+  ]
 
   constructor(private ngoService: NgoService,
               private router: Router) {
@@ -26,27 +82,15 @@ export class HomeComponent implements OnInit {
 
   viewNgo(id: number) {
     console.log(id);
-    this.router.navigate(['ngo/ngoTable/view/', id]);
+    /*this.router.navigate(['ngo/ngoTable/view/', id]);*/
   }
 
   editNgo(id: number) {
     console.log(id);
-    this.router.navigate(['ngo/ngoTable/edit/', id]);
+    /*    this.router.navigate(['ngo/ngoTable/edit/', id]);*/
   }
 
   DeleteNgo(id: number) {
     console.log(id);
-    // this.ngoService.delete(id).subscribe(res => {
-    //   this.ngos = this.ngos.filter(item => item.id !== id);
-    //   console.log('Ngo deleted successfully!');
-    // });
   }
-
-  // deleteNgo(id) {
-  //   this.ngoService.delete(id).subscribe(res => {
-  //     this.ngos = this.ngos.filter(item => item.id !== id);
-  //     console.log('Ngo deleted successfully!');
-  //   })
-  // }
-
 }
