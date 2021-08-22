@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="form_wrapper" style="width: 50%">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Add Configuration</h2>
+      </div>
+      <div class="row clearfix" style="font-weight: bold">
+        <div style="width: 100%">
+          <form [formGroup]="SettingForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-key"></i></span>
+                <input type="text" formControlName="key" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.key.errors }" placeholder="key"/>
+                <div *ngIf="submitted && f.key.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.key.errors.required">key is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input_field"><span><i aria-hidden="true" class="fa fa-key"></i></span>
+                <input type="text" formControlName="value" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.value.errors }" placeholder="value"/>
+                <div *ngIf="submitted && f.value.errors" class="invalid-feedback" style="margin-left: 5%">
+                  <div *ngIf="f.value.errors.required">value is required</div>
+                </div>
+              </div>
+            </div>
+
+            <input class="button" type="submit" value="{{ statusUpdate === false ? 'Add Config' : 'Update Config'}}"/>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="places-buttons">
+                <div class="row">
+                  <div class="col-md-6 ml-auto mr-auto text-center">
+                    <div class="card-header" style="text-align: center">
+                      <h2 class="card-title">Display Configuration</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <table class="table table-striped" style="text-align: center">
+                    <thead>
+                    <tr style="background-color: #e6f9ff">
+                      <th>Key</th>
+                      <th>Value</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let config of allConfig">
+                      <td>{{ config.key }}</td>
+                      <td>{{ config.value }}</td>
+                      <td>
+                        <button class="btn btn-danger" (click)="deleteConfig(config.id)">Delete</button>
+                      </td>
+                      <td>
+                        <button class="btn btn-primary" (click)="updateConfig(config.id)">Update</button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

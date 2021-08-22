@@ -1,0 +1,49 @@
+<div class="container">
+
+  <table class="table table-bordered" style="text-align: center">
+    <thead>
+    <tr style="background-color: #80dfff">
+      <th scope="col" rowspan="2">ID</th>
+      <th scope="col" rowspan="2">User Name</th>
+      <th scope="col" rowspan="2">Gender</th>
+      <th scope="col" rowspan="2">Age</th>
+      <th scope="col" rowspan="2">point</th>
+      <th scope="col" colspan="1">Accepted</th>
+      <th scope="col" colspan="1">Rejected</th>
+    </tr>
+    <tr style="background-color: #b3ecff">
+      <th scope="col">count</th>
+      <th scope="col">count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let statisticUser of result | keyvalue">
+      <tr>
+        <td>{{ statisticUser.value[0].id }}</td>
+        <td>{{ statisticUser.value[0].userName }}</td>
+        <td>{{ statisticUser.value[0].genderName }}</td>
+        <td>{{ statisticUser.value[0].age }}</td>
+        <td>{{ statisticUser.value[0].point }}</td>
+        <td>
+          {{
+            statisticUser.value[0].needResponseStatusName === 'Accepted' ?
+            statisticUser.value[0].count :
+            statisticUser.value[1].needResponseStatusName === 'Accepted' ?
+            statisticUser.value[1].count : ''
+          }}
+        </td>
+        <td>
+          {{
+            statisticUser.value[1] ?
+            statisticUser.value[1].needResponseStatusName === 'Rejected' ?
+            statisticUser.value[1].count :
+            statisticUser.value[0].needResponseStatusName === 'Rejected' ?
+            statisticUser.value[0].count :
+              '' : ''
+          }}
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
