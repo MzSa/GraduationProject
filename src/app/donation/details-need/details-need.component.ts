@@ -34,33 +34,33 @@ export class DetailsNeedComponent implements OnInit {
       console.log(this.need);
       console.log(this.need.hashtags);
     });
-    // this.need = {
-    //   id: 1,
-    //   description: 'بحاجة ملابس بحاجة ملابس بحاجة ملابس',
-    //   amount: 20,
-    //   progress: 50,
-    //   dueDate: new Date(),
-    //   catalogName: 'clothes',
-    //   workName: 'blabla',
-    //   benefactorId: 3005,
-    //   benefactorUserName: 'ammarBa',
-    //   needStatuesName: 'need delivery',
-    //   state: 'state',
-    //   county: 'county',
-    //   city: 'city',
-    //   neighborhood: 'neighborhood',
-    //   street: 'street',
-    //   hashtags: [
-    //     {
-    //       name: 'ملابس'
-    //     },
-    //     {
-    //       name: 'طعام'
-    //     }
-    //   ]
-    // };
+    /*    this.need = {
+          id: 1,
+          description: 'بحاجة ملابس',
+          amount: 20,
+          progress: 50,
+          dueDate: new Date(),
+          catalogName: 'clothes',
+          workName: 'سيريتل',
+          benefactorId: 3005,
+          benefactorUserName: 'ammarBa',
+          needStatuesName: 'need delivery',
+          state: 'state',
+          county: 'county',
+          city: 'city',
+          neighborhood: 'neighborhood',
+          street: 'street',
+          hashtags: [
+            {
+              name: 'ملابس'
+            },
+            {
+              name: 'طعام'
+            }
+          ]
+        };*/
 
-    // this.progress = Math.round(100 * this.need.amount / 50);
+    this.progress = Math.round(100 * this.need.amount / 50);
   }
 
   viewStatus() {

@@ -28,6 +28,15 @@ export class NgoService {
       )
   }
 
+  getNgoByName(ngoName: string): Observable<NgoList> {
+    const params = new HttpParams()
+      .set('ngoName', String(ngoName))
+    return this.httpClient.get<NgoList>(`http://172.20.10.7:8080/ngo/NGO/search`, {params})
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   getById(id): Observable<ResponseByIdModel> {
     const params = new HttpParams()
       .append('id', String(id))

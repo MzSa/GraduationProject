@@ -57,7 +57,7 @@ export class SignInComponent implements OnInit {
     this.loginRequest.login = this.f.username.value;
     this.loginRequest.password = this.f.password.value;
     console.log(this.loginRequest);
-    // this.router.navigateByUrl('/donation');
+    // this.router.navigateByUrl('/pages/dashboard');
     this.authService.login(this.loginRequest)
       .subscribe(
         (data: LoginResponse) => {

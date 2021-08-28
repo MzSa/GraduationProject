@@ -9,14 +9,20 @@ import {NavbarModule} from '../shared/navbar/navbar.module';
 import {FooterModule} from '../shared/footer/footer.module';
 import {FixedPluginModule} from '../shared/fixedplugin/fixedplugin.module';
 import {AddSponsorComponent} from './add-sponsor/add-sponsor.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AllCompanyComponent } from './all-company/all-company.component';
+import { AddAdvertisementComponent } from './add-advertisement/add-advertisement.component';
+import { ShowAdvertisingComponent } from './show-advertising/show-advertising.component';
 
 
 @NgModule({
   declarations: [
     MarketingHomeComponent,
     AllNgoComponent,
-    AddSponsorComponent
+    AddSponsorComponent,
+    AllCompanyComponent,
+    AddAdvertisementComponent,
+    ShowAdvertisingComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +31,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     NavbarModule,
     FooterModule,
     FixedPluginModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class MarketingModule {

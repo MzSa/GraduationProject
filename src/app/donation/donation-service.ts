@@ -106,4 +106,14 @@ export class DonationService {
   updateConfigurationForNgo(config: any) {
     return this.http.post<any>(`http://172.20.10.7:8080/ngo/app-config/add`, config);
   }
+
+  searchNeeds(searchNeedsObject: any): Observable<ResponseNeed> {
+    this.id = parseInt(localStorage.getItem('ngoId'));
+    const params = new HttpParams()
+      .set('ngoId', String(this.id))
+      .set('catalog', searchNeedsObject.catalog)
+      .set('statusName', searchNeedsObject.statusName)
+      .set('hashTag', searchNeedsObject.hashTag)
+    return this.http.get<ResponseNeed>(`http://172.20.10.7:8080/ngo/need/search`, {params});
+  }
 }

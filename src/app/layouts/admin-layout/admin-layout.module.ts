@@ -8,19 +8,19 @@ import {AdminLayoutRoutes} from './admin-layout.routing';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AdvertisingComponent} from '../../marketing/advertising/advertising.component';
+import {GalleryComponent} from '../../pages/dashboard/components/gallery/gallery.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule.forChild(AdminLayoutRoutes),
-        FormsModule,
-        NgbModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(AdminLayoutRoutes),
+    FormsModule,
+    NgbModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     DashboardComponent,
-    AdvertisingComponent
+    GalleryComponent,
   ]
 })
 

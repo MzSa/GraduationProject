@@ -3,6 +3,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {MarketingHomeComponent} from './marketing-home/marketing-home.component';
 import {AllNgoComponent} from './all-ngo/all-ngo.component';
 import {AddSponsorComponent} from './add-sponsor/add-sponsor.component';
+import {AllCompanyComponent} from './all-company/all-company.component';
+import {AddAdvertisementComponent} from './add-advertisement/add-advertisement.component';
+import {ShowAdvertisingComponent} from './show-advertising/show-advertising.component';
 
 
 const routes: Routes = [
@@ -15,6 +18,15 @@ const routes: Routes = [
       },
       {
         path: 'add-sponsor/:id', component: AddSponsorComponent
+      },
+      {
+        path: 'all-company', component: AllCompanyComponent
+      },
+      {
+        path: 'add-advertising/:id', component: AddAdvertisementComponent
+      },
+      {
+        path: 'show-advertising', component: ShowAdvertisingComponent
       }
     ]
   },

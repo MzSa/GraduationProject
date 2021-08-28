@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
 
   <table class="table table-bordered" style="text-align: center">
     <thead>
@@ -26,24 +26,86 @@
         <td>{{ statisticUser.value[0].point }}</td>
         <td>
           {{
-            statisticUser.value[0].needResponseStatusName === 'Accepted' ?
+          statisticUser.value[0].needResponseStatusName === 'Accepted' ?
             statisticUser.value[0].count :
             statisticUser.value[1].needResponseStatusName === 'Accepted' ?
-            statisticUser.value[1].count : ''
+              statisticUser.value[1].count : ''
           }}
         </td>
         <td>
           {{
-            statisticUser.value[1] ?
+          statisticUser.value[1] ?
             statisticUser.value[1].needResponseStatusName === 'Rejected' ?
-            statisticUser.value[1].count :
-            statisticUser.value[0].needResponseStatusName === 'Rejected' ?
-            statisticUser.value[0].count :
-              '' : ''
+              statisticUser.value[1].count :
+              statisticUser.value[0].needResponseStatusName === 'Rejected' ?
+                statisticUser.value[0].count :
+                '' : ''
           }}
         </td>
       </tr>
     </ng-container>
     </tbody>
   </table>
+</div>-->
+
+<!--******************************************************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Statistic User</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" style="text-align: center">
+            <thead class="text-primary">
+            <tr>
+              <th scope="col" rowspan="2">ID</th>
+              <th scope="col" rowspan="2">User Name</th>
+              <th scope="col" rowspan="2">Gender</th>
+              <th scope="col" rowspan="2">Age</th>
+              <th scope="col" rowspan="2">point</th>
+              <th scope="col" colspan="1">Accepted</th>
+              <th scope="col" colspan="1">Rejected</th>
+            </tr>
+            <tr>
+              <th scope="col" class="text-success">count</th>
+              <th scope="col" class="text-success">count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let statisticUser of result | keyvalue">
+              <tr>
+                <td>{{ statisticUser.value[0].id }}</td>
+                <td>{{ statisticUser.value[0].userName }}</td>
+                <td>{{ statisticUser.value[0].genderName }}</td>
+                <td>{{ statisticUser.value[0].age }}</td>
+                <td>{{ statisticUser.value[0].point }}</td>
+                <td>
+                  {{
+                  statisticUser.value[0].needResponseStatusName === 'Accepted' ?
+                    statisticUser.value[0].count :
+                    statisticUser.value[1].needResponseStatusName === 'Accepted' ?
+                      statisticUser.value[1].count : ''
+                  }}
+                </td>
+                <td>
+                  {{
+                  statisticUser.value[1] ?
+                    statisticUser.value[1].needResponseStatusName === 'Rejected' ?
+                      statisticUser.value[1].count :
+                      statisticUser.value[0].needResponseStatusName === 'Rejected' ?
+                        statisticUser.value[0].count :
+                        '' : ''
+                  }}
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

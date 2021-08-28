@@ -6,9 +6,9 @@ import {DonationService} from '../donation-service';
 import {PublishNeed} from './model/publish-need';
 import {Catalog} from '../../auth/register/model/catalog';
 import {List} from './model/list';
-import {ResponseNeed} from './model/response-need';
 import {ResponseUpdateModel} from './model/response-update-model';
 import {ResponseUpdate} from './model/response-update';
+import {ResponseNeed} from './model/response-need';
 
 @Component({
   selector: 'app-publish-need',
@@ -16,6 +16,10 @@ import {ResponseUpdate} from './model/response-update';
   styleUrls: ['./publish-need.component.css']
 })
 export class PublishNeedComponent implements OnInit {
+
+  selectedCatalog = '';
+  selectedStatuesName = '';
+  selectedHashtag = '';
 
   form!: FormGroup;
   modalRef!: BsModalRef;
@@ -83,6 +87,20 @@ export class PublishNeedComponent implements OnInit {
       console.log(data);
       this.catalogs = data;
     });
+    /*    this.catalogs = [
+          {
+            id: 1,
+            name: 'clothes'
+          },
+          {
+            id: 2,
+            name: 'food'
+          },
+          {
+            id: 3,
+            name: 'car'
+          }
+        ];*/
 
     this.getAllNeeds();
   }
@@ -92,6 +110,38 @@ export class PublishNeedComponent implements OnInit {
       console.log(response);
       this.Events = response.list;
     });
+    /*    this.Events = [
+          {
+            'id': 5,
+            'description': 'بحاجة ملابس مدرسة',
+            'amount': 20,
+            'progress': null,
+            'dueDate': new Date(Date.now()),
+            'catalogName': 'clothes',
+            'workName': null,
+            'needStatuesName': 'need donate',
+            'hashtags': [
+              {
+                'name': '# ملابس'
+              }
+            ]
+          },
+          {
+            'id': 5,
+            'description': 'بحاجة مواد غذائية',
+            'amount': 20,
+            'progress': null,
+            'dueDate': new Date(Date.now()),
+            'catalogName': 'clothes',
+            'workName': null,
+            'needStatuesName': 'need donate',
+            'hashtags': [
+              {
+                'name': '# ملابس'
+              }
+            ]
+          }
+        ];*/
   }
 
   addEvent(template: any) {
@@ -226,4 +276,25 @@ export class PublishNeedComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  Search() {
+    if (this.selectedCatalog === '') {
+      this.selectedCatalog = null;
+    }
+    if (this.selectedStatuesName === '') {
+      this.selectedStatuesName = null;
+    }
+    if (this.selectedHashtag === '') {
+      this.selectedHashtag = null;
+    }
+    const searchNeeds = {
+      catalog: this.selectedCatalog,
+      statusName: this.selectedStatuesName,
+      hashTag: this.selectedHashtag
+    };
+    console.log(searchNeeds);
+    this.donationService.searchNeeds(searchNeeds).subscribe((response: ResponseNeed) => {
+      console.log(response);
+      this.Events = response.list;
+    });
+  }
 }

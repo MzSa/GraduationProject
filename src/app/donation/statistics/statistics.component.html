@@ -1,9 +1,9 @@
-<table class="table table-bordered" style="text-align: center">
+<!--<table class="table table-bordered" style="text-align: center">
   <thead>
   <tr style="background-color: #4dd2ff">
-<!--    <th scope="col" rowspan="8">
-      <p style="font-size: 150%;">Need</p>
-    </th>-->
+    &lt;!&ndash;    <th scope="col" rowspan="8">
+          <p style="font-size: 150%;">Need</p>
+        </th>&ndash;&gt;
     <th scope="col" colspan="8">
       <p style="font-size: 150%">Type Of Need</p>
     </th>
@@ -35,12 +35,12 @@
   </thead>
   <tbody>
   <tr *ngFor="let need_report of need_reports">
-    <!--    <td>{{ need_report.needStatusName }}</td>
+    &lt;!&ndash;    <td>{{ need_report.needStatusName }}</td>
         <td>{{ need_report.needStatusName == 'Need Delivery' ? need_report.genderName == 'Male' ? need_report.count : '' : '' }}</td>
         <td>{{ need_report.needStatusName == 'Need Delivery' ? need_report.genderName == 'Female' ? need_report.count : '' : '' }}</td>
         <td>{{ need_report.needStatusName == 'Need Donation' ? need_report.genderName == 'Male' ? need_report.count : '' : '' }}</td>
-        <td>{{ need_report.needStatusName == 'Need Donation' ? need_report.genderName == 'Female' ? need_report.count : '' : '' }}</td>-->
-<!--    <td>{{ need_report.needStatusName }}</td>-->
+        <td>{{ need_report.needStatusName == 'Need Donation' ? need_report.genderName == 'Female' ? need_report.count : '' : '' }}</td>&ndash;&gt;
+    &lt;!&ndash;    <td>{{ need_report.needStatusName }}</td>&ndash;&gt;
     <td>
       {{
       need_report.needStatusName == 'Need Delivery' ?
@@ -107,4 +107,125 @@
     </td>
   </tr>
   </tbody>
-</table>
+</table>-->
+
+<!--****************************************************************-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Statistic Ngo</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" style="text-align: center">
+            <tr class="text-primary">
+              <th scope="col" colspan="8">
+                <p>Type Of Need</p>
+              </th>
+            </tr>
+            <tr class="text-warning">
+              <th scope="col" colspan="4">
+                <p>Transportation</p>
+              </th>
+              <th scope="col" colspan="4">
+                <p>Donation</p>
+              </th>
+            </tr>
+            <tr class="text-primary">
+              <th scope="col" colspan="2"><p>Male</p></th>
+              <th scope="col" colspan="2"><p>Female</p></th>
+              <th scope="col" colspan="2"><p>Male</p></th>
+              <th scope="col" colspan="2"><p>Female</p></th>
+            </tr>
+            <tr class="text-success">
+              <th scope="col"><p>completed</p></th>
+              <th scope="col"><p>uncompleted</p></th>
+              <th scope="col"><p>completed</p></th>
+              <th scope="col"><p>uncompleted</p></th>
+              <th scope="col"><p>completed</p></th>
+              <th scope="col"><p>uncompleted</p></th>
+              <th scope="col"><p>completed</p></th>
+              <th scope="col"><p>uncompleted</p></th>
+            </tr>
+            <tbody>
+            <tr *ngFor="let need_report of need_reports">
+              <!--    <td>{{ need_report.needStatusName }}</td>
+                  <td>{{ need_report.needStatusName == 'Need Delivery' ? need_report.genderName == 'Male' ? need_report.count : '' : '' }}</td>
+                  <td>{{ need_report.needStatusName == 'Need Delivery' ? need_report.genderName == 'Female' ? need_report.count : '' : '' }}</td>
+                  <td>{{ need_report.needStatusName == 'Need Donation' ? need_report.genderName == 'Male' ? need_report.count : '' : '' }}</td>
+                  <td>{{ need_report.needStatusName == 'Need Donation' ? need_report.genderName == 'Female' ? need_report.count : '' : '' }}</td>-->
+              <!--    <td>{{ need_report.needStatusName }}</td>-->
+              <td>
+                {{
+                need_report.needStatusName == 'Need Delivery' ?
+                  need_report.needResponseStatusName == 'Accepted' ?
+                    need_report.genderName == 'Male' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Delivery' ?
+                  need_report.needResponseStatusName == 'Rejected' ?
+                    need_report.genderName == 'Male' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Delivery' ?
+                  need_report.needResponseStatusName == 'Accepted' ?
+                    need_report.genderName == 'Female' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Delivery' ?
+                  need_report.needResponseStatusName == 'Rejected' ?
+                    need_report.genderName == 'Female' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Donation' ?
+                  need_report.needResponseStatusName == 'Accepted' ?
+                    need_report.genderName == 'Male' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Donation' ?
+                  need_report.needResponseStatusName == 'Rejected' ?
+                    need_report.genderName == 'Male' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Donation' ?
+                  need_report.needResponseStatusName == 'Accepted' ?
+                    need_report.genderName == 'Female' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+              <td>
+                {{
+                need_report.needStatusName == 'Need Donation' ?
+                  need_report.needResponseStatusName == 'Rejected' ?
+                    need_report.genderName == 'Female' ?
+                      need_report.count : '0' : '0' : '0'
+                }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

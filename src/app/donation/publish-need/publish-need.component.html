@@ -1,8 +1,52 @@
 <div class="row">
   <div class="col-lg-12 grid-margin">
     <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <label class="text-warning font-weight-bold" style="font-size: 100%">Need Status Name : </label>
+                  </div>
+                  <div class="col-auto">
+                    <div class="form-group pmd-textfield pmd-textfield-outline pmd-textfield-floating-label">
+                      <select class="custom-select" [(ngModel)]="selectedStatuesName">
+                        <option Value="need donate">Need Donate</option>
+                        <option Value="need delivery">Need Delivery</option>
+                        <option Value="terminate">Terminate</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <label class="text-warning font-weight-bold" style="font-size: 100%">Catalog : </label>
+                  </div>
+                  <div class="col-auto">
+                    <div class="form-group pmd-textfield pmd-textfield-outline pmd-textfield-floating-label">
+                      <select class="custom-select" [(ngModel)]="selectedCatalog">
+                        <option *ngFor="let catalog of catalogs" [ngValue]="catalog.name">{{catalog.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <label class="text-warning font-weight-bold" style="font-size: 100%">Hashtag : </label>
+                  </div>
+                  <div class="col-auto mb-2">
+                    <input type="text" class="form-control" [(ngModel)]="selectedHashtag">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 text-center mt-2">
+                    <button type="button" class="btn btn-success" (click)="Search()">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card-body">
-
         <div class="col-sm-12 col-md">
           <ngx-timeline [events]="Events">
             <ng-template let-event let-index="rowIndex" timelineBody>

@@ -9,10 +9,15 @@
               <div *ngIf="event.statues == 'Accepted'">
                 <div class="card bg-light mb-3">
                   <div class="card-header" style="text-align: center">
-                    <h3>{{ event.userName }}</h3>
+                    <h3><span class="text-primary">User Name</span> : {{ event.userName }}</h3>
                   </div>
-                  <div class="card-body" style="text-align: center">
-                    <h3>{{ event.amount }}</h3>
+                  <div class="card-body row" style="text-align: center">
+                    <div class="col-md-6">
+                      <h3><span class="text-success">Amount</span> : {{ event.amount }}</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3><span class="text-warning">Note</span> : {{ event.note }}</h3>
+                    </div>
                   </div>
                 </div>
                 <div class="button-row">
@@ -20,7 +25,7 @@
                     type="button"
                     class="btn btn-primary"
                     (click)="accept(event.id)"
-                    [disabled]="event.statues !== 'Rejected'"
+                    [disabled]="event.statues == 'Rejected'"
                   >
                     <i class="fa fa-edit"></i> Accept
                   </button>
@@ -29,7 +34,7 @@
                     type="button"
                     class="btn btn-danger"
                     (click)="reject(event.id)"
-                    [disabled]="event.statues !== 'Rejected'"
+                    [disabled]="event.statues == 'Rejected'"
                   >
                     <i class="fa fa-trash"></i> Reject
                   </button>

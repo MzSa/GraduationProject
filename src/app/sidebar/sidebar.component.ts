@@ -12,14 +12,16 @@ export const Admin: RouteInfo[] = [
   {path: '/pages/dashboard', title: 'Dashboard', icon: 'nc-bank', class: ''},
   {path: '/auth/registerNgo', title: 'Register NGO', icon: 'nc-single-02', class: ''},
   {path: '/auth/registerCompany', title: 'Register Company', icon: 'nc-single-02', class: ''},
-  {path: '/pages/advertising', title: 'Advertising', icon: 'nc-bell-55', class: ''},
+  {path: '/marketing/all-company', title: 'Publish Advertisement', icon: 'nc-bell-55', class: ''},
+  {path: '/marketing/show-advertising', title: 'Show Advertisements', icon: 'nc-bell-55', class: ''},
   {path: '/ngo/ngoTable/home', title: 'Ngo', icon: 'nc-tile-56', class: ''},
   {path: '/company/companyTable/home', title: 'Company', icon: 'nc-tile-56', class: ''}
 ];
 
 export const Company: RouteInfo[] = [
   {path: '/pages/dashboard', title: 'Dashboard', icon: 'nc-bank', class: ''},
-  {path: '/marketing/all-ngo', title: 'NGO', icon: 'nc-diamond', class: ''}
+  {path: '/marketing/all-ngo', title: 'Add Sponsor', icon: 'nc-diamond', class: ''},
+  {path: '/marketing/show-advertising', title: 'Show Advertisements', icon: 'nc-bell-55', class: ''},
 ];
 
 export const Ngo: RouteInfo[] = [
@@ -43,7 +45,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.userRole = localStorage.getItem('role');
-    // this.userRole = 'Ngo';
+    // this.userRole = 'ngo';
     if (this.userRole === 'company') {
       this.menuItems = Company.filter(menuItem => menuItem);
     } else if (this.userRole === 'admin') {

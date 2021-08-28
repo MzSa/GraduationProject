@@ -10,9 +10,9 @@ import {Statistic} from './statistic.model';
 })
 export class StatisticsComponent implements OnInit {
 
-  need_reports: ListStatistic[];
+/*  need_reports: ListStatistic[];*/
 
-  /*need_reports: any = [
+  need_reports: any = [
     {
       'id': 1,
       'needStatusName': 'Need Delivery',
@@ -26,8 +26,22 @@ export class StatisticsComponent implements OnInit {
       'needResponseStatusName': 'Rejected',
       'genderName': 'Male',
       'count': 2
+    },
+    {
+      'id': 3,
+      'needStatusName': 'Need Donation',
+      'needResponseStatusName': 'Rejected',
+      'genderName': 'Female',
+      'count': 10
+    },
+    {
+      'id': 4,
+      'needStatusName': 'Need Donation',
+      'needResponseStatusName': 'Accepted',
+      'genderName': 'Female',
+      'count': 25
     }
-  ];*/
+  ];
 
   constructor(private donationService: DonationService) {
   }

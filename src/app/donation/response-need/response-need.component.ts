@@ -13,7 +13,9 @@ export class ResponseNeedComponent implements OnInit {
 
   id;
   action: string;
-  public events: ResponseActionNeedList[];
+  events: ResponseActionNeedList[];
+
+  // events: any;
 
   constructor(private route: ActivatedRoute,
               private donationService: DonationService,
@@ -32,6 +34,24 @@ export class ResponseNeedComponent implements OnInit {
     this.donationService.getNeedResponse(this.id).subscribe((data: ResponseActionNeed) => {
       this.events = data.list;
     });
+    /*    this.events = [
+          {
+            id: 3,
+            amount: 1,
+            note: 'حاكوني خاص',
+            userId: 3005,
+            userName: 'ammarBa',
+            statues: 'Accepted'
+          },
+          {
+            id: 3,
+            amount: 50,
+            note: 'حاكوني خاص',
+            userId: 3005,
+            userName: 'MoutazSa',
+            statues: 'Accepted'
+          }
+        ];*/
   }
 
   accept(id: number) {

@@ -9,59 +9,60 @@ import {DonationService} from '../donation-service';
 export class StatisticUserComponent implements OnInit {
 
   result = {};
-  statisticUsers: any = [];
+  // statisticUsers: any = [];
 
-  /*  statisticUsers: any = [
-      {
-        id: 1,
-        userName: 'ammarBa',
-        needStatusName: 'Need Delivery',
-        needResponseStatusName: 'Accepted',
-        genderName: 'Male',
-        age: 21,
-        point: 100,
-        count: 4
-      },
-      {
-        id: 2,
-        userName: 'ammarBa',
-        needStatusName: 'Need Delivery',
-        needResponseStatusName: 'Rejected',
-        genderName: 'Male',
-        age: 21,
-        point: 100,
-        count: 2
-      },
-      {
-        id: 3,
-        userName: 'MoutazSa',
-        needStatusName: 'Need Donation',
-        needResponseStatusName: 'Accepted',
-        genderName: 'Male',
-        age: 21,
-        point: 100,
-        count: 25
-      },
-      {
-        id: 4,
-        userName: 'MoutazSa',
-        needStatusName: 'Need Donation',
-        needResponseStatusName: 'Rejected',
-        genderName: 'Male',
-        age: 21,
-        point: 100,
-        count: 50
-      },
-    ];*/
+  statisticUsers: any = [
+    {
+      id: 1,
+      userName: 'ammarBa',
+      needStatusName: 'Need Delivery',
+      needResponseStatusName: 'Accepted',
+      genderName: 'Male',
+      age: 21,
+      point: 100,
+      count: 4
+    },
+    {
+      id: 2,
+      userName: 'ammarBa',
+      needStatusName: 'Need Delivery',
+      needResponseStatusName: 'Rejected',
+      genderName: 'Male',
+      age: 21,
+      point: 100,
+      count: 2
+    },
+    {
+      id: 3,
+      userName: 'MoutazSa',
+      needStatusName: 'Need Donation',
+      needResponseStatusName: 'Accepted',
+      genderName: 'Male',
+      age: 21,
+      point: 100,
+      count: 25
+    },
+    {
+      id: 4,
+      userName: 'MoutazSa',
+      needStatusName: 'Need Donation',
+      needResponseStatusName: 'Rejected',
+      genderName: 'Male',
+      age: 21,
+      point: 100,
+      count: 50
+    },
+  ];
 
   constructor(private donationService: DonationService) {
   }
 
   ngOnInit(): void {
-    this.donationService.getNeedReportAllForUser().subscribe((res: any) => {
-      this.statisticUsers = res.list;
-      this.DisplayObject();
-    });
+    /*    this.donationService.getNeedReportAllForUser().subscribe((res: any) => {
+          this.statisticUsers = res.list;
+          this.DisplayObject();
+        });*/
+    this.DisplayObject();
   }
 
   DisplayObject() {

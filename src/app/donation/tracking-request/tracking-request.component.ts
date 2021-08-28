@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import State from './state';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-tracking-request',
@@ -36,13 +36,13 @@ export class TrackingRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.route.params
-    //   .subscribe(
-    //     (params: Params) => {
-    //       this.id = +params['id'];
-    //       console.log(this.id);
-    //     }
-    //   );
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          console.log(this.id);
+        }
+      );
     this.route.queryParams.subscribe((params) => {
       console.log(params);
       this.state.id = params.id;
